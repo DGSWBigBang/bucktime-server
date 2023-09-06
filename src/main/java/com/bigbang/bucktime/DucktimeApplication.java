@@ -1,4 +1,4 @@
-package com.bigbang.ducktime;
+package com.bigbang.bucktime;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
