@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bigbang.bucktime.domain.user.dao.UserMapper">
-
+    <insert id="signup" parameterType="com.bigbang.bucktime.domain.user.dto.SignupRequest">
+        INSERT INTO user (user_mail, user_name, phone_number, password, auth) VALUES (#{userMail}, #{userName}, #{phoneNumber}, #{userPassword}, "USER")
+    </insert>
 </mapper>
