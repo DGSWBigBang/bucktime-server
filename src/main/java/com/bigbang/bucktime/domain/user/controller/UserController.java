@@ -7,10 +7,7 @@ import com.bigbang.bucktime.global.jwt.JwtInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +26,7 @@ public class UserController {
         return ResponseEntity.ok(userService.login(loginRequest));
     }
 
-    @PostMapping("/delete-account")
+    @GetMapping("/delete-account")
     public ResponseEntity<String> deleteAccount(HttpServletRequest request) {
         userService.deleteAccount(request);
         return ResponseEntity.ok("회원탈퇴 완료");
