@@ -19,4 +19,6 @@ public interface NoticeMapper {
     List<ShowAllNoticeResponse> findAllNotice();
 
     NoticeEntity findByNoticeIdx(Integer noticeIdx);
+
+    void deleteNotice(Integer noticeIdx);
 }

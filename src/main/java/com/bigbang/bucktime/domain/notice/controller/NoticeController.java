@@ -40,4 +40,10 @@ public class NoticeController {
     public ResponseEntity<NoticeEntity> showNotice(@PathVariable("noticeIdx") Integer noticeIdx) {
         return ResponseEntity.ok(noticeService.findByNoticeIdx(noticeIdx));
     }
+
+    @DeleteMapping("/delete/{noticeIdx}")
+    public ResponseEntity<String> deleteNotice(@PathVariable("noticeIdx") Integer noticeIdx) {
+        noticeService.deleteNotice(noticeIdx);
+        return ResponseEntity.ok("공지 삭제 완료");
+    }
 }

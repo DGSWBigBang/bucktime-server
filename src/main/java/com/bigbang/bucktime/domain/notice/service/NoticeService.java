@@ -30,4 +30,8 @@ public class NoticeService {
     public NoticeEntity findByNoticeIdx(Integer noticeIdx) {
         return noticeMapper.findByNoticeIdx(noticeIdx);
     }
+
+    public void deleteNotice(Integer noticeIdx) {
+        noticeMapper.deleteNotice(noticeIdx);
+    }
 }
