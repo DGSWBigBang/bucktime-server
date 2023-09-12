@@ -26,7 +26,7 @@ public class UserController {
         return ResponseEntity.ok(userService.login(loginRequest));
     }
 
-    @GetMapping("/delete-account")
+    @DeleteMapping("/delete-account")
     public ResponseEntity<String> deleteAccount(HttpServletRequest request) {
         userService.deleteAccount(request);
         return ResponseEntity.ok("회원탈퇴 완료");

@@ -6,11 +6,11 @@
     </insert>
 
     <select id="findByUserMail" parameterType="String" resultMap="userEntity">
-        SELECT * FROM user WHERE user_mail = #{userMail}
+        SELECT * FROM user WHERE user_mail is #{userMail}
     </select>
 
     <delete id="deleteByUserMail" parameterType="String">
-        DELETE FROM user WHERE user_mail = #{userMail}
+        DELETE FROM user WHERE user_mail is #{userMail}
     </delete>
 
     <resultMap id="userEntity" type="com.bigbang.bucktime.domain.user.dto.entity.UserEntity">
