@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bigbang.bucktime.domain.cafe.dao.CafeMapper">
-
+    <update id="updateCafeInfo" parameterType="com.bigbang.bucktime.domain.cafe.dto.entity.CafeEntity">
+        UPDATE cafe
+        SET
+        address = #{address},
+        cafe_name = #{cafeName}
+        WHERE id is #{cafeIdx}
+    </update>
 </mapper>
