@@ -1,4 +1,4 @@
-package com.bigbang.bucktime.domain.user.dto;
+package com.bigbang.bucktime.domain.user.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
