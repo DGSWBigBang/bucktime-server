@@ -32,7 +32,7 @@ public class NoticeController {
     }
 
     @GetMapping("/show")
-    public ResponseEntity<?> showNotice(@RequestParam(value = "noticeIdx") Integer noticeIdx) {
+    public ResponseEntity<?> showNotice(@RequestParam(value = "noticeIdx", required = false) Integer noticeIdx) {
         if(noticeIdx == null) {
             return ResponseEntity.ok(noticeService.findAllNotice());
         } else {
