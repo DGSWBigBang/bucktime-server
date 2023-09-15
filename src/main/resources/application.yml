@@ -4,3 +4,6 @@ mybatis:
 jwt:
   secret: 29286392db62dd10efe464ce96b6df883161f3e1d429613d7bb19599546ab62c
   issuer: bigbang
+spring:
+  profiles:
+    default: prod
