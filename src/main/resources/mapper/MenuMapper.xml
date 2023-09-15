@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigbang.bucktime.domain.menu.dao.MenuMapper">
+    <insert id="createMenu" parameterType="com.bigbang.bucktime.domain.menu.dto.request.CreateMenuRequest">
+        INSERT INTO menu (menu_name, menu_description, menu_price, cafe_idx) VALUES (#{menuName}, #{menuDescription}, #{menuPrice}, #{cafeIdx});
+    </insert>
+
+    <update id="modifyMenu" parameterType="com.bigbang.bucktime.domain.menu.dto.request.ModifyMenuRequest">
+        UPDATE menu SET menu_name = #{menuName}, menu_description = #{menuDescription}, menu_price = #{menuPrice} WHERE menu_idx = #{menuIdx};
+    </update>
+
+    <delete id="deleteMenu" parameterType="Integer">
+        DELETE FROM menu WHERE menu_idx = #{menuIdx};
+    </delete>
+
+    <select id="showAllMenu" parameterType="Integer" resultMap="showAllMenuResponse">
+        SELECT menu_idx, menu_name, menu_price FROM menu WHERE cafe_idx = #{cafeIdx};
+    </select>
+
+    <select id="showMenu" parameterType="Integer" resultMap="showMenuResponse">
+        SELECT menu_idx, menu_name, menu_description, menu_price FROM menu WHERE cafe_idx = #{cafeIdx} AND menu_idx = #{menuIdx};
+    </select>
+
+    <resultMap id="showAllMenuResponse" type="com.bigbang.bucktime.domain.menu.dto.response.ShowAllMenuResponse">
+        <id column="menu_idx" property="menuIdx"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_price" property="menuPrice"/>
+    </resultMap>
+
+    <resultMap id="showMenuResponse" type="com.bigbang.bucktime.domain.menu.dto.response.ShowMenuResponse">
+        <id column="menu_idx" property="menuIdx"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_description" property="menuDescription"/>
+        <result column="menu_price" property="menuPrice"/>
+    </resultMap>
+</mapper>

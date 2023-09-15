@@ -6,11 +6,11 @@
     </insert>
 
     <update id="modifyDesk" parameterType="com.bigbang.bucktime.domain.desk.dto.request.ModifyDeskRequest">
-        UPDATE desk SET desk_name = #{deskName} WHERE desk_idx is #{deskIdx};
+        UPDATE desk SET desk_name = #{deskName} WHERE desk_idx = #{deskIdx};
     </update>
 
     <select id="findDesk" parameterType="Integer" resultMap="deskEntity">
-        SELECT * FROM desk WHERE cafe_idx is #{cafeIdx};
+        SELECT * FROM desk WHERE cafe_idx = #{cafeIdx};
     </select>
 
     <resultMap id="deskEntity" type="com.bigbang.bucktime.domain.desk.dto.entity.DeskEntity">

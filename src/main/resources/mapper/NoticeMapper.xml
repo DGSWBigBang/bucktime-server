@@ -6,7 +6,7 @@
     </insert>
 
     <update id="modifyNotice" parameterType="com.bigbang.bucktime.domain.notice.dto.request.ModifyNoticeRequest">
-        UPDATE notice SET notice_title = #{title}, notice_content = #{content} WHERE notice_idx is #{noticeIdx};
+        UPDATE notice SET notice_title = #{title}, notice_content = #{content} WHERE notice_idx = #{noticeIdx};
     </update>
 
     <select id="findAllNotice" resultMap="showAllNoticeResponse">
@@ -14,11 +14,11 @@
     </select>
 
     <select id="findByNoticeIdx" resultMap="noticeEntity" parameterType="Integer">
-        SELECT * FROM notice WHERE notice_idx is #{noticeIdx}
+        SELECT * FROM notice WHERE notice_idx = #{noticeIdx}
     </select>
 
     <delete id="deleteNotice" parameterType="Integer">
-        DELETE FROM notice WHERE notice_idx is #{noticeIdx};
+        DELETE FROM notice WHERE notice_idx = #{noticeIdx};
     </delete>
 
     <resultMap id="showAllNoticeResponse" type="com.bigbang.bucktime.domain.notice.dto.response.ShowAllNoticeResponse">

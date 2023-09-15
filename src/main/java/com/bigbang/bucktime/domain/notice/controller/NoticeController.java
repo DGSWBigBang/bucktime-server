@@ -32,17 +32,16 @@ public class NoticeController {
     }
 
     @GetMapping("/show")
-    public ResponseEntity<List<ShowAllNoticeResponse>> showAllNotice() {
-        return ResponseEntity.ok(noticeService.findAllNotice());
+    public ResponseEntity<?> showNotice(@RequestParam(value = "noticeIdx") Integer noticeIdx) {
+        if(noticeIdx == null) {
+            return ResponseEntity.ok(noticeService.findAllNotice());
+        } else {
+            return ResponseEntity.ok(noticeService.findByNoticeIdx(noticeIdx));
+        }
     }
 
-    @GetMapping("/show/{noticeIdx}")
-    public ResponseEntity<NoticeEntity> showNotice(@PathVariable("noticeIdx") Integer noticeIdx) {
-        return ResponseEntity.ok(noticeService.findByNoticeIdx(noticeIdx));
-    }
-
-    @DeleteMapping("/delete/{noticeIdx}")
-    public ResponseEntity<String> deleteNotice(@PathVariable("noticeIdx") Integer noticeIdx) {
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteNotice(@RequestParam(value = "noticeIdx") Integer noticeIdx) {
         noticeService.deleteNotice(noticeIdx);
         return ResponseEntity.ok("공지 삭제 완료");
     }
