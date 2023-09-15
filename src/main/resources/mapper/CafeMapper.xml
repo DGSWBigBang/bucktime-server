@@ -6,6 +6,6 @@
         SET
         address = #{address},
         cafe_name = #{cafeName}
-        WHERE id is #{cafeIdx}
+        WHERE cafe_idx = #{cafeIdx}
     </update>
 </mapper>
