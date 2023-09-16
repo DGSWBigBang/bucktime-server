@@ -13,6 +13,10 @@
         DELETE FROM user WHERE user_mail = #{userMail}
     </delete>
 
+    <update id="modifyUser" parameterType="com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest">
+        UPDATE user SET user_name = #{userName}, phone_number = #{phoneNumber}, password = #{userPassword} WHERE user_mail = #{userMail};
+    </update>
+
     <resultMap id="userEntity" type="com.bigbang.bucktime.domain.user.dto.entity.UserEntity">
         <id column="user_mail" property="userMail"/>
         <result column="user_name" property="userName"/>

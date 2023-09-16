@@ -1,6 +1,7 @@
 package com.bigbang.bucktime.domain.user.controller;
 
 import com.bigbang.bucktime.domain.user.dto.request.LoginRequest;
+import com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest;
 import com.bigbang.bucktime.domain.user.dto.request.SignupRequest;
 import com.bigbang.bucktime.domain.user.service.UserService;
 import com.bigbang.bucktime.global.jwt.JwtInfo;
@@ -15,10 +16,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/add-account")
-    public ResponseEntity<String> signup(@RequestBody SignupRequest signupRequest) {
+    @PostMapping("/create")
+    public ResponseEntity<String> createUser(@RequestBody SignupRequest signupRequest) {
         userService.addAccount(signupRequest);
-        return ResponseEntity.ok("회원가입 완료");
+        return ResponseEntity.ok("회원 가입 완료");
     }
 
     @PostMapping("/login")
@@ -26,9 +27,15 @@ public class UserController {
         return ResponseEntity.ok(userService.login(loginRequest));
     }
 
-    @DeleteMapping("/delete-account")
+    @DeleteMapping("/delete")
     public ResponseEntity<String> deleteAccount(HttpServletRequest request) {
         userService.deleteAccount(request);
-        return ResponseEntity.ok("회원탈퇴 완료");
+        return ResponseEntity.ok("회원 탈퇴 완료");
+    }
+
+    @PutMapping("/modify")
+    public ResponseEntity<String> modifyUser(@RequestBody ModifyUserRequest modifyUserRequest) {
+        userService.modifyUser(modifyUserRequest);
+        return ResponseEntity.ok("회원 수정 완료");
     }
 }

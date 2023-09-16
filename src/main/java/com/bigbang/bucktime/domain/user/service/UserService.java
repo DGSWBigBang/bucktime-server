@@ -2,6 +2,7 @@ package com.bigbang.bucktime.domain.user.service;
 
 import com.bigbang.bucktime.domain.user.dao.UserMapper;
 import com.bigbang.bucktime.domain.user.dto.request.LoginRequest;
+import com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest;
 import com.bigbang.bucktime.domain.user.dto.request.SignupRequest;
 import com.bigbang.bucktime.global.jwt.JwtInfo;
 import com.bigbang.bucktime.global.jwt.JwtProvider;
@@ -37,5 +38,9 @@ public class UserService {
 
     public void deleteAccount(HttpServletRequest request) {
         userMapper.deleteByUserMail(jwtProvider.getUserMail(request));
+    }
+
+    public void modifyUser(ModifyUserRequest modifyUserRequest) {
+        userMapper.modifyUser(modifyUserRequest);
     }
 }

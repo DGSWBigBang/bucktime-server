@@ -1,15 +1,11 @@
 package com.bigbang.bucktime.domain.notice.controller;
 
-import com.bigbang.bucktime.domain.notice.dto.entity.NoticeEntity;
 import com.bigbang.bucktime.domain.notice.dto.request.ModifyNoticeRequest;
 import com.bigbang.bucktime.domain.notice.dto.request.WriteNoticeRequest;
-import com.bigbang.bucktime.domain.notice.dto.response.ShowAllNoticeResponse;
 import com.bigbang.bucktime.domain.notice.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
