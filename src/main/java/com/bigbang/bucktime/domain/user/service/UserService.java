@@ -4,6 +4,7 @@ import com.bigbang.bucktime.domain.user.dao.UserMapper;
 import com.bigbang.bucktime.domain.user.dto.request.LoginRequest;
 import com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest;
 import com.bigbang.bucktime.domain.user.dto.request.SignupRequest;
+import com.bigbang.bucktime.domain.user.dto.response.ShowUserResponse;
 import com.bigbang.bucktime.global.jwt.JwtInfo;
 import com.bigbang.bucktime.global.jwt.JwtProvider;
 import jakarta.servlet.http.HttpServletRequest;
@@ -41,6 +42,11 @@ public class UserService {
     }
 
     public void modifyUser(ModifyUserRequest modifyUserRequest) {
+        modifyUserRequest.setUserPassword(bCryptPasswordEncoder.encode(modifyUserRequest.getUserPassword()));
         userMapper.modifyUser(modifyUserRequest);
+    }
+
+    public ShowUserResponse showUser(HttpServletRequest request) {
+        return userMapper.showUser(jwtProvider.getUserMail(request));
     }
 }
