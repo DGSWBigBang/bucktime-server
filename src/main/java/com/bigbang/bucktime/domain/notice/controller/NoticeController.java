@@ -28,7 +28,7 @@ public class NoticeController {
     }
 
     @GetMapping("/show")
-    public ResponseEntity<?> showNotice(@RequestParam(value = "noticeIdx", required = false) Integer noticeIdx) {
+    public ResponseEntity<?> showNotice(@RequestParam(value = "notice-idx", required = false) Integer noticeIdx) {
         if(noticeIdx == null) {
             return ResponseEntity.ok(noticeService.findAllNotice());
         } else {
@@ -37,7 +37,7 @@ public class NoticeController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteNotice(@RequestParam(value = "noticeIdx") Integer noticeIdx) {
+    public ResponseEntity<String> deleteNotice(@RequestParam(value = "notice-idx") Integer noticeIdx) {
         noticeService.deleteNotice(noticeIdx);
         return ResponseEntity.ok("공지 삭제 완료");
     }

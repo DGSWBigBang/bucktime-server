@@ -26,13 +26,13 @@ public class MenuController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteMenu(@RequestParam(value = "menuIdx") Integer menuIdx) {
+    public ResponseEntity<String> deleteMenu(@RequestParam(value = "menu-idx") Integer menuIdx) {
         menuService.deleteMenu(menuIdx);
         return ResponseEntity.ok("메뉴 삭제 완료");
     }
 
     @GetMapping("/show")
-    public ResponseEntity<?> showMenu(@RequestParam(value = "cafeIdx") Integer cafeIdx, @RequestParam(value = "menuIdx", required = false) Integer menuIdx) {
+    public ResponseEntity<?> showMenu(@RequestParam(value = "cafe-idx") Integer cafeIdx, @RequestParam(value = "menuIdx", required = false) Integer menuIdx) {
         if(menuIdx == null) {
             return ResponseEntity.ok(menuService.showAllMenu(cafeIdx));
         } else {

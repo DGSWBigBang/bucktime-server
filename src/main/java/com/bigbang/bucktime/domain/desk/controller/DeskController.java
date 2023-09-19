@@ -29,13 +29,13 @@ public class DeskController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteDesk(@RequestParam(value = "deskIdx") Integer deskIdx) {
+    public ResponseEntity<String> deleteDesk(@RequestParam(value = "desk-idx") Integer deskIdx) {
         deskService.deleteDesk(deskIdx);
         return ResponseEntity.ok("테이블 삭제 완료");
     }
 
     @GetMapping("/show")
-    public ResponseEntity<List<DeskEntity>> findDesk(@RequestParam(value = "cafeIdx") Integer cafeIdx) {
+    public ResponseEntity<List<DeskEntity>> findDesk(@RequestParam(value = "cafe-idx") Integer cafeIdx) {
         return ResponseEntity.ok(deskService.findDesk(cafeIdx));
     }
 }
