@@ -22,7 +22,6 @@ public class UserService {
     private final UserMapper userMapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Transactional
     public void addAccount(SignupRequest signupRequest) {
         signupRequest.setUserPassword(bCryptPasswordEncoder.encode(signupRequest.getUserPassword()));
         userMapper.insertUser(signupRequest);

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigbang.bucktime.domain.reservation.dao.RezMapper">
+    <insert id="createReservation" parameterType="com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest">
+        INSERT INTO reservation (start_time, finish_time, desk_idx, user_mail) VALUES (#{startTime}, #{finishTime}, #{deskIdx}, #{userMail});
+    </insert>
+</mapper>

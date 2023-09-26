@@ -26,7 +26,12 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<JwtInfo> login(@RequestBody LoginRequest loginRequest) {
-        return ResponseEntity.ok(userService.login(loginRequest));
+        JwtInfo jwtInfo = userService.login(loginRequest);
+        if(jwtInfo == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(userService.login(loginRequest));
+        }
     }
 
     @DeleteMapping("/delete")
