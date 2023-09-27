@@ -32,11 +32,11 @@ public class MenuController {
     }
 
     @GetMapping("/show")
-    public ResponseEntity<?> showMenu(@RequestParam(value = "cafe-idx") Integer cafeIdx, @RequestParam(value = "menu-idx", required = false) Integer menuIdx) {
+    public ResponseEntity<?> showMenu(@RequestParam(value = "cafe-idx", required = false) Integer cafeIdx, @RequestParam(value = "menu-idx", required = false) Integer menuIdx) {
         if(menuIdx == null) {
             return ResponseEntity.ok(menuService.showAllMenu(cafeIdx));
         } else {
-            return ResponseEntity.ok(menuService.showMenu(cafeIdx, menuIdx));
+            return ResponseEntity.ok(menuService.showMenu(menuIdx));
         }
     }
 }

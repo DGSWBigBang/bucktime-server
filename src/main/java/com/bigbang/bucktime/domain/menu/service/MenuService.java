@@ -31,7 +31,7 @@ public class MenuService {
         return menuMapper.showAllMenu(cafeIdx);
     }
 
-    public ShowMenuResponse showMenu(Integer cafeIdx, Integer menuIdx) {
-        return menuMapper.showMenu(cafeIdx, menuIdx);
+    public ShowMenuResponse showMenu(Integer menuIdx) {
+        return menuMapper.showMenu(menuIdx);
     }
 }

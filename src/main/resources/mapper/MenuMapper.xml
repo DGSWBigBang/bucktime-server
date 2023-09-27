@@ -18,7 +18,7 @@
     </select>
 
     <select id="showMenu" parameterType="Integer" resultMap="showMenuResponse">
-        SELECT menu_idx, menu_name, menu_description, menu_price FROM menu WHERE cafe_idx = #{cafeIdx} AND menu_idx = #{menuIdx};
+        SELECT menu_idx, menu_name, menu_description, menu_price FROM menu WHERE menu_idx = #{menuIdx};
     </select>
 
     <resultMap id="showAllMenuResponse" type="com.bigbang.bucktime.domain.menu.dto.response.ShowAllMenuResponse">

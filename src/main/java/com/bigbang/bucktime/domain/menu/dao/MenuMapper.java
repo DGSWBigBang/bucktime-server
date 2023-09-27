@@ -21,5 +21,5 @@ public interface MenuMapper {
 
     List<ShowAllMenuResponse> showAllMenu(Integer cafeIdx);
 
-    ShowMenuResponse showMenu(@Param("cafeIdx") Integer cafeIdx, @Param("menuIdx") Integer menuIdx);
+    ShowMenuResponse showMenu(Integer menuIdx);
 }
