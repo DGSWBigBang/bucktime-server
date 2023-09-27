@@ -27,12 +27,13 @@ public class OrderService {
         List<ShowOrderResponse> orderResponseList = new ArrayList<>();
         for (OrderEntity order: orderList) {
             Integer cafeIdx = orderMapper.findCafeIdx(order.getMenuIdx());
-            ShowOrderResponse orderResponse = new ShowOrderResponse();
-            orderResponse.setOrderIdx(order.getOrderIdx());
-            orderResponse.setOrderTime(order.getOrderTime());
-            orderResponse.setMenuName(orderMapper.findMenuName(order.getMenuIdx()));
-            orderResponse.setCafeName(orderMapper.findCafeName(cafeIdx));
-            orderResponse.setCompletion(order.getCompletion() == 1 ? "완료" : "대기중");
+            ShowOrderResponse orderResponse = ShowOrderResponse.builder()
+                    .orderIdx(order.getOrderIdx())
+                    .orderTime(order.getOrderTime())
+                    .menuName(orderMapper.findMenuName(order.getMenuIdx()))
+                    .cafeName(orderMapper.findCafeName(cafeIdx))
+                    .completion(order.getCompletion() == 1 ? "완료" : "대기중")
+                    .build();
             orderResponseList.add(orderResponse);
         }
         return orderResponseList;
@@ -43,12 +44,13 @@ public class OrderService {
         List<OrderEntity> orderList = orderMapper.showOwnerPoint(cafeIdx);
         List<ShowOrderResponse> orderResponseList = new ArrayList<>();
         for (OrderEntity order: orderList) {
-            ShowOrderResponse orderResponse = new ShowOrderResponse();
-            orderResponse.setOrderIdx(order.getOrderIdx());
-            orderResponse.setOrderTime(order.getOrderTime());
-            orderResponse.setMenuName(orderMapper.findMenuName(order.getMenuIdx()));
-            orderResponse.setCafeName(orderMapper.findCafeName(cafeIdx));
-            orderResponse.setCompletion(order.getCompletion() == 1 ? "완료" : "대기중");
+            ShowOrderResponse orderResponse = ShowOrderResponse.builder()
+                    .orderIdx(order.getOrderIdx())
+                    .orderTime(order.getOrderTime())
+                    .menuName(orderMapper.findMenuName(order.getMenuIdx()))
+                    .cafeName(orderMapper.findCafeName(cafeIdx))
+                    .completion(order.getCompletion() == 1 ? "완료" : "대기중")
+                    .build();
             orderResponseList.add(orderResponse);
         }
         return orderResponseList;
