@@ -4,6 +4,7 @@ import com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest;
 import com.bigbang.bucktime.domain.reservation.service.RezService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +20,8 @@ public class RezController {
         return ResponseEntity.ok("예약 완료");
     }
 
-
+    @GetMapping("/show")
+    public ResponseEntity<?> showReservation(@RequestParam("cafe-idx") Integer cafeIdx) {
+        return null;
+    }
 }

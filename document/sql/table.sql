@@ -54,7 +54,8 @@ finish_time TIMESTAMP NOT NULL,
 user_mail VARCHAR(50) NOT NULL,
 desk_idx INT NOT NULL,
 FOREIGN KEY (user_mail) REFERENCES user(user_mail) ON DELETE CASCADE,
-FOREIGN KEY (desk_idx) REFERENCES desk(desk_idx) ON DELETE CASCADE
+FOREIGN KEY (desk_idx) REFERENCES desk(desk_idx) ON DELETE CASCADE,
+used BOOLEAN NOT NULL DEFAULT '0'
 );
 
 CREATE TABLE use(

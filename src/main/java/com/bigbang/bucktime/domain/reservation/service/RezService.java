@@ -17,4 +17,5 @@ public class RezService {
         createRezRequest.setUserMail(jwtProvider.getUserMail(request));
         rezMapper.createReservation(createRezRequest);
     }
+
 }
