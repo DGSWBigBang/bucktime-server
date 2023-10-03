@@ -33,10 +33,12 @@ public class MenuController {
 
     @GetMapping("/show")
     public ResponseEntity<?> showMenu(@RequestParam(value = "cafe-idx", required = false) Integer cafeIdx, @RequestParam(value = "menu-idx", required = false) Integer menuIdx) {
-        if(menuIdx == null) {
+        if(menuIdx == null && cafeIdx != null) {
             return ResponseEntity.ok(menuService.showAllMenu(cafeIdx));
-        } else {
+        } else if(menuIdx != null && cafeIdx == null) {
             return ResponseEntity.ok(menuService.showMenu(menuIdx));
+        } else {
+            return ResponseEntity.badRequest().body("데이터가 유효하지 않음");
         }
     }
 }

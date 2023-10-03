@@ -4,4 +4,21 @@
     <insert id="createReservation" parameterType="com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest">
         INSERT INTO reservation (start_time, finish_time, desk_idx, user_mail) VALUES (#{startTime}, #{finishTime}, #{deskIdx}, #{userMail});
     </insert>
+
+    <select id="showReservation" parameterType="Integer" resultMap="reservationEntity">
+        SELECT * FROM reservation WHERE desk_idx = #{deskIdx};
+    </select>
+
+    <update id="modifyUsed" parameterType="Integer">
+        UPDATE reservation SET used = '1' WHERE rez_idx = #{rezIdx};
+    </update>
+
+    <resultMap id="reservationEntity" type="com.bigbang.bucktime.domain.reservation.dto.entity.ReservationEntity">
+        <id column="rez_idx" property="rezIdx"/>
+        <result column="start_time" property="startTime"/>
+        <result column="finish_time" property="finishTime"/>
+        <result column="user_mail" property="userMail"/>
+        <result column="desk_idx" property="deskIdx"/>
+        <result column="used" property="used"/>
+    </resultMap>
 </mapper>

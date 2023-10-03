@@ -15,8 +15,6 @@ public class NoticeController {
 
     @PostMapping("/create")
     public ResponseEntity<String> writeNotice(@RequestBody WriteNoticeRequest writeNoticeRequest) {
-        System.out.println(writeNoticeRequest.getTitle());
-        System.out.println(writeNoticeRequest.getContent());
         noticeService.createNotice(writeNoticeRequest);
         return ResponseEntity.ok("공지 등록 성공");
     }

@@ -1,12 +1,15 @@
 package com.bigbang.bucktime.domain.reservation.controller;
 
 import com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest;
+import com.bigbang.bucktime.domain.reservation.dto.response.ShowReservationResponse;
 import com.bigbang.bucktime.domain.reservation.service.RezService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/rez")
@@ -21,7 +24,13 @@ public class RezController {
     }
 
     @GetMapping("/show")
-    public ResponseEntity<?> showReservation(@RequestParam("cafe-idx") Integer cafeIdx) {
-        return null;
+    public ResponseEntity<List<ShowReservationResponse>> showReservation(@RequestParam("desk-idx") Integer deskIdx) {
+        return ResponseEntity.ok(rezService.showReservation(deskIdx));
+    }
+
+    @PutMapping("/modify/used")
+    public ResponseEntity<String> modifyUsed(@RequestParam("rez-idx") Integer rezIdx) {
+        rezService.modifyUsed(rezIdx);
+        return ResponseEntity.ok("사용 시작");
     }
 }
