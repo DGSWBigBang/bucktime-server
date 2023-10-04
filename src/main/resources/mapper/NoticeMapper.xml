@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigbang.bucktime.domain.notice.dao.NoticeMapper">
+    <insert id="createNotice" parameterType="com.bigbang.bucktime.domain.notice.dto.request.WriteNoticeRequest">
+        INSERT INTO notice (notice_title, notice_content) VALUES (#{title}, #{content});
+    </insert>
+
+    <update id="modifyNotice" parameterType="com.bigbang.bucktime.domain.notice.dto.request.ModifyNoticeRequest">
+        UPDATE notice SET notice_title = #{title}, notice_content = #{content} WHERE notice_idx = #{noticeIdx};
+    </update>
+
+    <select id="findAllNotice" resultMap="showAllNoticeResponse">
+        SELECT notice_idx, notice_title, notice_date FROM notice;
+    </select>
+
+    <select id="findByNoticeIdx" resultMap="noticeEntity" parameterType="Integer">
+        SELECT * FROM notice WHERE notice_idx = #{noticeIdx}
+    </select>
+
+    <delete id="deleteNotice" parameterType="Integer">
+        DELETE FROM notice WHERE notice_idx = #{noticeIdx};
+    </delete>
+
+    <resultMap id="showAllNoticeResponse" type="com.bigbang.bucktime.domain.notice.dto.response.ShowAllNoticeResponse">
+        <id column="notice_idx" property="noticeIdx"/>
+        <result column="notice_title" property="noticeTitle"/>
+        <result column="notice_date" property="noticeDate"/>
+    </resultMap>
+
+    <resultMap id="noticeEntity" type="com.bigbang.bucktime.domain.notice.dto.entity.NoticeEntity">
+        <id column="notice_idx" property="noticeIdx"/>
+        <result column="notice_title" property="noticeTitle"/>
+        <result column="notice_content" property="noticeContent"/>
+        <result column="notice_date" property="noticeDate"/>
+    </resultMap>
+</mapper>
