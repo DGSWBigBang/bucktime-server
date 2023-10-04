@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bigbang.bucktime.domain.cafe.dao.CafeMapper">
-    <update id="updateCafeInfo" parameterType="com.bigbang.bucktime.domain.cafe.dto.entity.CafeEntity">
+    <update id="updateCafeInfo" parameterType="com.bigbang.bucktime.domain.cafe.dto.request.ModifyCafeInfoRequest">
         UPDATE cafe
         SET
         address = #{address},
         cafe_name = #{cafeName}
         WHERE cafe_idx = #{cafeIdx}
     </update>
+
+    <select id="showCafeInfo" resultMap="cafeEntity">
+        SELECT * FROM cafe;
+    </select>
+
+    <resultMap id="cafeEntity" type="com.bigbang.bucktime.domain.cafe.dto.entity.CafeEntity">
+        <id column="cafe_idx" property="cafeIdx"/>
+        <result column="cafe_address" property="address"/>
+        <result column="cafe_name" property="cafeName"/>
+        <result column="owner_mail" property="ownerMail"/>
+    </resultMap>
 </mapper>
