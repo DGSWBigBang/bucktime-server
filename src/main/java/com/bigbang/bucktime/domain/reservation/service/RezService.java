@@ -1,5 +1,6 @@
 package com.bigbang.bucktime.domain.reservation.service;
 
+import com.bigbang.bucktime.domain.desk.dao.DeskMapper;
 import com.bigbang.bucktime.domain.reservation.dao.RezMapper;
 import com.bigbang.bucktime.domain.reservation.dto.entity.ReservationEntity;
 import com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RezService {
     private final RezMapper rezMapper;
+    private final DeskMapper deskMapper;
     private final JwtProvider jwtProvider;
 
     public void createReservation(CreateRezRequest createRezRequest, HttpServletRequest request) {
@@ -29,6 +31,7 @@ public class RezService {
         for (ReservationEntity reservation: reservationEntityList) {
             ShowReservationResponse reservationResponse = ShowReservationResponse.builder()
                     .rezIdx(reservation.getRezIdx())
+                    .deskName(deskMapper.findDeskName(reservation.getDeskIdx()))
                     .deskIdx(reservation.getDeskIdx())
                     .startTime(reservation.getStartTime())
                     .finishTime(reservation.getFinishTime())

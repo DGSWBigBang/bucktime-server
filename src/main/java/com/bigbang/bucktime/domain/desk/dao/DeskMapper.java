@@ -20,4 +20,6 @@ public interface DeskMapper {
     List<DeskEntity> findDesk(Integer cafeIdx);
 
     List<DeskEntity> findOwnerDesk(String ownerMail);
+
+    String findDeskName(Integer deskIdx);
 }

@@ -17,6 +17,10 @@
         SELECT d.desk_idx, d.desk_name, d.cafe_idx FROM cafe c JOIN desk d ON d.cafe_idx = c.cafe_idx WHERE c.owner_mail = #{ownerMail};
     </select>
 
+    <select id="findDeskName" parameterType="Integer" resultType="String">
+        SELECT desk_name FROM desk WHERE desk_idx = #{deskIdx};;
+    </select>
+
     <resultMap id="deskEntity" type="com.bigbang.bucktime.domain.desk.dto.entity.DeskEntity">
         <id column="desk_idx" property="deskIdx"/>
         <result column="desk_name" property="deskName"/>
