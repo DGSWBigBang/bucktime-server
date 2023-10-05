@@ -16,7 +16,6 @@ public class UserEntity implements UserDetails {
     private String phoneNumber;
     private String password;
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<String> roles = List.of(this.auth.split(","));
