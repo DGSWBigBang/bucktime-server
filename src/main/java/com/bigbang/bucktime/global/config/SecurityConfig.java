@@ -32,6 +32,9 @@ public class SecurityConfig {
                         .disable()
                 )
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+                        .requestMatchers("/notice/create", "/notice/modify", "/notice/delete").hasRole("ADMIN")
+                        .requestMatchers("/desk/create", "/desk/modify", "/desk/delete", "/cafe/modify", "/cafe/show/owner", "/order/modify/completion", "/order/show/owner", "/menu/create", "/menu/modify", "/menu/delete").hasRole("OWNER")
+                        .requestMatchers("/user/modify", "/user/show", "/user/delete", "/order/create", "/order/show/user", "/rez/modify/used", "/rez/create").hasRole("USER")
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
