@@ -6,6 +6,7 @@ import com.bigbang.bucktime.domain.desk.dto.request.ModifyDeskRequest;
 import com.bigbang.bucktime.domain.desk.service.DeskService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,9 +41,15 @@ public class DeskController {
         return ResponseEntity.ok("테이블 삭제 완료");
     }
 
-    @Operation(summary = "카페 정보 불러오기")
+    @Operation(summary = "테이블 정보 불러오기")
     @GetMapping("/show")
     public ResponseEntity<List<DeskEntity>> findDesk(@RequestParam(value = "cafe-idx") Integer cafeIdx) {
         return ResponseEntity.ok(deskService.findDesk(cafeIdx));
+    }
+
+    @Operation(summary = "테이블 정보 불러오기(사장)")
+    @GetMapping("/show/owner")
+    public ResponseEntity<List<DeskEntity>> findOwnerDesk(HttpServletRequest request) {
+        return ResponseEntity.ok(deskService.findOwnerDesk(request));
     }
 }

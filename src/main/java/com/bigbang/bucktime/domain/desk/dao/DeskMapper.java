@@ -18,4 +18,6 @@ public interface DeskMapper {
     void deleteDesk(Integer deskIdx);
 
     List<DeskEntity> findDesk(Integer cafeIdx);
+
+    List<DeskEntity> findOwnerDesk(String ownerMail);
 }
