@@ -5,7 +5,8 @@
         UPDATE cafe
         SET
         address = #{address},
-        cafe_name = #{cafeName}
+        cafe_name = #{cafeName},
+        cafe_description = #{cafeDescription}
         WHERE cafe_idx = #{cafeIdx}
     </update>
 
@@ -22,5 +23,6 @@
         <result column="cafe_address" property="address"/>
         <result column="cafe_name" property="cafeName"/>
         <result column="owner_mail" property="ownerMail"/>
+        <result column="cafe_description" property="cafeDescription"/>
     </resultMap>
 </mapper>
