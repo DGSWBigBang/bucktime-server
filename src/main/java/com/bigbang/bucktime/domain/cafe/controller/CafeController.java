@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,4 +34,8 @@ public class CafeController {
     public ResponseEntity<List<CafeEntity>> showCafeInfo() {
         return ResponseEntity.ok(cafeService.showCafeInfo());
     }
+
+    @Operation(summary = "카페 정보 요청(사장)")
+    @GetMapping("/show/owner")
+    public ResponseEntity<CafeEntity> showOwnerCafeInfo(HttpServletRequest request) {return ResponseEntity.ok(cafeService.showOwnerCafeInfo(request));}
 }

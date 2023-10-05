@@ -13,6 +13,10 @@
         SELECT * FROM cafe;
     </select>
 
+    <select id="showOwnerCafeInfo" resultMap="cafeEntity">
+        SELECT * FROM cafe WHERE owner_mail = #{ownerMail};
+    </select>
+
     <resultMap id="cafeEntity" type="com.bigbang.bucktime.domain.cafe.dto.entity.CafeEntity">
         <id column="cafe_idx" property="cafeIdx"/>
         <result column="cafe_address" property="address"/>
