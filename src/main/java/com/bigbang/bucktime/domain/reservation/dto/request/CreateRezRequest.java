@@ -8,8 +8,8 @@ import java.sql.Date;
 @Getter
 @Setter
 public class CreateRezRequest {
-    private Date startTime;
-    private Date finishTime;
+    private String startTime;
+    private String finishTime;
     private Integer deskIdx;
     private String userMail;
 }
