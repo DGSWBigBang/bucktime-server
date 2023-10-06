@@ -4,7 +4,7 @@
     <update id="updateCafeInfo" parameterType="com.bigbang.bucktime.domain.cafe.dto.request.ModifyCafeInfoRequest">
         UPDATE cafe
         SET
-        address = #{address},
+        cafe_address = #{address},
         cafe_name = #{cafeName},
         cafe_description = #{cafeDescription}
         WHERE cafe_idx = #{cafeIdx}
