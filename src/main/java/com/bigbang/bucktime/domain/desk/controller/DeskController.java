@@ -22,8 +22,8 @@ public class DeskController {
 
     @Operation(summary = "테이블 생성(사장)")
     @PostMapping("/create")
-    public ResponseEntity<String> createDesk(@RequestBody CreateDeskRequest createDeskRequest) {
-        deskService.createDesk(createDeskRequest);
+    public ResponseEntity<String> createDesk(@RequestBody CreateDeskRequest createDeskRequest, HttpServletRequest request) {
+        deskService.createDesk(createDeskRequest, request);
         return ResponseEntity.ok("테이블 생성 완료");
     }
 

@@ -1,5 +1,6 @@
 package com.bigbang.bucktime.domain.desk.service;
 
+import com.bigbang.bucktime.domain.cafe.dao.CafeMapper;
 import com.bigbang.bucktime.domain.desk.dao.DeskMapper;
 import com.bigbang.bucktime.domain.desk.dto.entity.DeskEntity;
 import com.bigbang.bucktime.domain.desk.dto.request.CreateDeskRequest;
@@ -15,9 +16,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DeskService {
     private final DeskMapper deskMapper;
+    private final CafeMapper cafeMapper;
     private final JwtProvider jwtProvider;
 
-    public void createDesk(CreateDeskRequest createDeskRequest) {
+    public void createDesk(CreateDeskRequest createDeskRequest, HttpServletRequest request) {
+        String userMail = jwtProvider.getUserMail(request);
+        Integer cafeIdx = cafeMapper.showOwnerCafeInfo(userMail).getCafeIdx();
+        createDeskRequest.setCafeIdx(cafeIdx);
         deskMapper.createDesk(createDeskRequest);
     }
 
