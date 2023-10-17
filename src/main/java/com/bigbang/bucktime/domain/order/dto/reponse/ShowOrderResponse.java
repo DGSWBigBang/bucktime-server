@@ -2,7 +2,6 @@ package com.bigbang.bucktime.domain.order.dto.reponse;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Builder

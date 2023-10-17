@@ -1,6 +1,5 @@
 package com.bigbang.bucktime.domain.user.controller;
 
-import com.bigbang.bucktime.domain.user.dto.entity.UserEntity;
 import com.bigbang.bucktime.domain.user.dto.request.LoginRequest;
 import com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest;
 import com.bigbang.bucktime.domain.user.dto.request.SignupRequest;

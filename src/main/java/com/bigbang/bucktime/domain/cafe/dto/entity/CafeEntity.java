@@ -9,4 +9,6 @@ public class CafeEntity {
     private String cafeDescription;
     private String address;
     private String ownerMail;
+    private String latitude;
+    private String longitude;
 }
