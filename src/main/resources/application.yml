@@ -6,8 +6,8 @@ jwt:
   issuer: bigbang
 spring:
   profiles:
-<<<<<<< HEAD
-    default: prod
+    default:
+      default: dev
 
 server:
     thymeleaf:
@@ -23,7 +23,5 @@ server:
 
     mvc:
         static-path-pattern: /static/**
-      
-=======
-    default: dev
->>>>>>> 90f4e0e02b82a890f30fd15a57d01b62e72ae867
+
+

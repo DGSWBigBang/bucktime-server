@@ -1,7 +1,5 @@
 package com.bigbang.bucktime.global.jwt;
 
-import com.bigbang.bucktime.global.errors.ErrorCode;
-import com.bigbang.bucktime.global.exception.UnauthorizedException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
