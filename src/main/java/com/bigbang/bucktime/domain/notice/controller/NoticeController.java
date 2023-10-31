@@ -3,6 +3,7 @@ package com.bigbang.bucktime.domain.notice.controller;
 import com.bigbang.bucktime.domain.notice.dto.request.ModifyNoticeRequest;
 import com.bigbang.bucktime.domain.notice.dto.request.WriteNoticeRequest;
 import com.bigbang.bucktime.domain.notice.service.NoticeService;
+import com.bigbang.bucktime.global.dto.Response;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -18,16 +19,16 @@ public class NoticeController {
 
     @Operation(summary = "공지 생성(관리자)")
     @PostMapping("/create")
-    public ResponseEntity<String> writeNotice(@RequestBody WriteNoticeRequest writeNoticeRequest) {
+    public ResponseEntity<Response> writeNotice(@RequestBody WriteNoticeRequest writeNoticeRequest) {
         noticeService.createNotice(writeNoticeRequest);
-        return ResponseEntity.ok("공지 등록 성공");
+        return ResponseEntity.ok(Response.of("공지 등록 성공"));
     }
 
     @Operation(summary = "공지 수정(관리자)")
     @PutMapping("/modify")
-    public ResponseEntity<String> modifyNotice(@RequestBody ModifyNoticeRequest modifyNoticeRequest) {
+    public ResponseEntity<Response> modifyNotice(@RequestBody ModifyNoticeRequest modifyNoticeRequest) {
         noticeService.modifyNotice(modifyNoticeRequest);
-        return ResponseEntity.ok("공지 수정 완료");
+        return ResponseEntity.ok(Response.of("공지 수정 완료"));
     }
 
     @Operation(summary = "공지 불러오기(관리자)", description = "notice-idx 파람이 없을 때는 공지의 인덱스, 제목, 날짜를 리스트로 불러옴 <br/> notice-idx가 없다면 공지의 상세 정보를 불러옴")
@@ -42,8 +43,8 @@ public class NoticeController {
 
     @Operation(summary = "공지 삭제(관리자)")
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteNotice(@RequestParam(value = "notice-idx") Integer noticeIdx) {
+    public ResponseEntity<Response> deleteNotice(@RequestParam(value = "notice-idx") Integer noticeIdx) {
         noticeService.deleteNotice(noticeIdx);
-        return ResponseEntity.ok("공지 삭제 완료");
+        return ResponseEntity.ok(Response.of("공지 삭제 완료"));
     }
 }

@@ -4,6 +4,7 @@ import com.bigbang.bucktime.domain.desk.dto.entity.DeskEntity;
 import com.bigbang.bucktime.domain.desk.dto.request.CreateDeskRequest;
 import com.bigbang.bucktime.domain.desk.dto.request.ModifyDeskRequest;
 import com.bigbang.bucktime.domain.desk.service.DeskService;
+import com.bigbang.bucktime.global.dto.Response;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,23 +23,23 @@ public class DeskController {
 
     @Operation(summary = "테이블 생성(사장)")
     @PostMapping("/create")
-    public ResponseEntity<String> createDesk(@RequestBody CreateDeskRequest createDeskRequest, HttpServletRequest request) {
+    public ResponseEntity<Response> createDesk(@RequestBody CreateDeskRequest createDeskRequest, HttpServletRequest request) {
         deskService.createDesk(createDeskRequest, request);
-        return ResponseEntity.ok("테이블 생성 완료");
+        return ResponseEntity.ok(Response.of("테이블 생성 완료"));
     }
 
     @Operation(summary = "테이블 정보 수정(사장)", description = "deskIdx는 식별용")
     @PutMapping("/modify")
-    public ResponseEntity<String> modifyDesk(@RequestBody ModifyDeskRequest modifyDeskRequest) {
+    public ResponseEntity<Response> modifyDesk(@RequestBody ModifyDeskRequest modifyDeskRequest) {
         deskService.modifyDesk(modifyDeskRequest);
-        return ResponseEntity.ok("테이블 변경 완료");
+        return ResponseEntity.ok(Response.of("테이블 변경 완료"));
     }
 
     @Operation(summary = "테이블 삭제(사장)")
     @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteDesk(@RequestParam(value = "desk-idx") Integer deskIdx) {
+    public ResponseEntity<Response> deleteDesk(@RequestParam(value = "desk-idx") Integer deskIdx) {
         deskService.deleteDesk(deskIdx);
-        return ResponseEntity.ok("테이블 삭제 완료");
+        return ResponseEntity.ok(Response.of("테이블 삭제 완료"));
     }
 
     @Operation(summary = "테이블 정보 불러오기")

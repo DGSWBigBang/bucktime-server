@@ -3,6 +3,7 @@ package com.bigbang.bucktime.domain.cafe.controller;
 import com.bigbang.bucktime.domain.cafe.dto.entity.CafeEntity;
 import com.bigbang.bucktime.domain.cafe.dto.request.ModifyCafeInfoRequest;
 import com.bigbang.bucktime.domain.cafe.service.CafeService;
+import com.bigbang.bucktime.global.dto.Response;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/cafe")
@@ -22,9 +22,9 @@ public class CafeController {
 
     @Operation(summary = "카페 정보 수정(사장)", description = "cafeIdx는 식별용")
     @PutMapping("/modify")
-    public ResponseEntity<String> updateCafeInfo(@RequestBody ModifyCafeInfoRequest updatedCafeInfo) {
+    public ResponseEntity<Response> updateCafeInfo(@RequestBody ModifyCafeInfoRequest updatedCafeInfo) {
         cafeService.modifyCafe(updatedCafeInfo);
-        return ResponseEntity.ok("카페 정보가 수정되었습니다");
+        return ResponseEntity.ok(Response.of("카페 정보가 수정되었습니다"));
     }
 
     @Operation(summary = "카페 정보 요청", description = "사실 ownerMail은 쓰잘때기 없음")
@@ -39,8 +39,8 @@ public class CafeController {
 
     @Operation(summary = "카페 생성 (관리자)")
     @PostMapping("/create")
-    public ResponseEntity<String> createCafe(CafeEntity cafeInfo) {
+    public ResponseEntity<Response> createCafe(CafeEntity cafeInfo) {
         cafeService.createCafe(cafeInfo);
-        return ResponseEntity.ok("카페 생성 완료");
+        return ResponseEntity.ok(Response.of("카페 생성 완료"));
     }
 }

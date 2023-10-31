@@ -40,7 +40,6 @@ dependencies {
 	implementation 'org.webjars:jquery-ui:1.11.4'
 	implementation group: 'org.webjars', name: 'jquery-tmpl', version: 'beta1.0.0-1'
 	implementation 'org.webjars:jquery-form:4.2.2'
-    
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'

@@ -3,6 +3,7 @@ package com.bigbang.bucktime.domain.reservation.controller;
 import com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest;
 import com.bigbang.bucktime.domain.reservation.dto.response.ShowReservationResponse;
 import com.bigbang.bucktime.domain.reservation.service.RezService;
+import com.bigbang.bucktime.global.dto.Response;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,9 +22,9 @@ public class RezController {
 
     @Operation(summary = "예약(유저)")
     @PostMapping("/create")
-    public ResponseEntity<String> createReservation(@RequestBody CreateRezRequest createRezRequest, HttpServletRequest request) {
+    public ResponseEntity<Response> createReservation(@RequestBody CreateRezRequest createRezRequest, HttpServletRequest request) {
         rezService.createReservation(createRezRequest, request);
-        return ResponseEntity.ok("예약 완료");
+        return ResponseEntity.ok(Response.of("예약 완료"));
     }
 
     @Operation(summary = "예약 정보 불러오기", description = "이미 시간이 지났거나 사용된 것 된 것도 나옴")
@@ -34,8 +35,8 @@ public class RezController {
 
     @Operation(summary = "사용 시작(유저)", description = "예약한 사용자가 사용 시작할때")
     @PutMapping("/modify/used")
-    public ResponseEntity<String> modifyUsed(@RequestParam("rez-idx") Integer rezIdx) {
+    public ResponseEntity<Response> modifyUsed(@RequestParam("rez-idx") Integer rezIdx) {
         rezService.modifyUsed(rezIdx);
-        return ResponseEntity.ok("사용 시작");
+        return ResponseEntity.ok(Response.of("사용 시작"));
     }
 }

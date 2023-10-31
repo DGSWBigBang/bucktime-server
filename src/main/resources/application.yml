@@ -6,8 +6,7 @@ jwt:
   issuer: bigbang
 spring:
   profiles:
-    default:
-      default: dev
+    include: dev
 
 server:
     thymeleaf:
