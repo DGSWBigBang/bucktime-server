@@ -17,4 +17,6 @@ public interface CafeMapper {
     List<CafeEntity> showCafeInfo();
 
     CafeEntity showOwnerCafeInfo(String ownerMail);
+
+    void createCafe(CafeEntity cafeInfo);
 }

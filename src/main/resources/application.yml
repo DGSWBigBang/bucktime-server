@@ -6,4 +6,4 @@ jwt:
   issuer: bigbang
 spring:
   profiles:
-    default: prod
+    default: dev
