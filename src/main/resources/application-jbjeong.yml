@@ -6,4 +6,4 @@ spring:
     password: parksj11
   config:
     activate:
-      on-profile: dev
+      on-profile: jbjeong
