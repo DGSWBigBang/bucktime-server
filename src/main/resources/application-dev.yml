@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/bucktime
+    url: jdbc:mariadb://svc.sel4.cloudtype.app:32727/bucktime
     username: root
     password: password
   config:
