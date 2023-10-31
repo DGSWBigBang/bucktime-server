@@ -12,7 +12,7 @@ import java.util.List;
 public interface CafeMapper {
     CafeEntity getCafeById(Long id);
 
-    void updateCafeInfo(ModifyCafeInfoRequest cafe);
+    Integer updateCafeInfo(ModifyCafeInfoRequest cafe);
 
     List<CafeEntity> showCafeInfo();
 
