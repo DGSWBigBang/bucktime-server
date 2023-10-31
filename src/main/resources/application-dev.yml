@@ -2,8 +2,10 @@ spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3306/bucktime
+    #username: root
+    #password: password
     username: root
-    password: password
+    password: parksj11
   config:
     activate:
       on-profile: dev

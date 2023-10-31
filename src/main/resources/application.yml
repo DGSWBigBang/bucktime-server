@@ -7,3 +7,19 @@ jwt:
 spring:
   profiles:
     default: prod
+
+server:
+    thymeleaf:
+      prefix: classpath:/templates/
+      suffix: .html
+      cache: false
+      check-template-location: true
+
+    web:
+        resources:
+            static-locations: classpath:/static/
+            add-mappings: true
+
+    mvc:
+        static-path-pattern: /static/**
+      
