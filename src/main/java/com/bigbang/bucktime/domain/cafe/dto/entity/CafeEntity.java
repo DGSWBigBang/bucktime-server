@@ -11,4 +11,7 @@ public class CafeEntity {
     private String ownerMail;
     private String latitude;
     private String longitude;
+    private String openTime;
+    private String closeTime;
+    private String callNumber;
 }

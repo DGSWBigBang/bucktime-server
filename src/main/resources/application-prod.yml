@@ -1,9 +1,0 @@
-spring:
-  datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://timebucks-db.cfrjxe9k6c3s.ap-northeast-2.rds.amazonaws.com/bucktime
-    username: user_bigbang
-    password: bigbang106022
-  config:
-    activate:
-      on-profile: prod

@@ -7,4 +7,7 @@ public class ModifyCafeInfoRequest {
     private Integer cafeIdx;
     private String cafeName;
     private String cafeDescription;
+    private String openTime;
+    private String closeTime;
+    private String callNumber;
 }
