@@ -8,4 +8,6 @@ import lombok.Setter;
 public class CreateDeskRequest {
     private String deskName;
     private Integer cafeIdx;
+    private Integer price;
+    private Long capacity;
 }
