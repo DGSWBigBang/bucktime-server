@@ -21,6 +21,14 @@
         SELECT user_mail, user_name, phone_number FROM user WHERE user_mail = #{userMail};
     </select>
 
+    <select id="countUserByUserMail" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM user WHERE user_mail = #{userMail};
+    </select>
+
+    <select id="countUserByPhoneNumber" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM user WHERE phone_number = #{phoneNumber};
+    </select>
+
     <resultMap id="userEntity" type="com.bigbang.bucktime.domain.user.dto.entity.UserEntity">
         <id column="user_mail" property="userMail"/>
         <result column="user_name" property="userName"/>

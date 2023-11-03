@@ -1,8 +1,10 @@
 package com.bigbang.bucktime.domain.user.controller;
 
+import com.bigbang.bucktime.domain.user.dto.request.DuplicateRequest;
 import com.bigbang.bucktime.domain.user.dto.request.LoginRequest;
 import com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest;
 import com.bigbang.bucktime.domain.user.dto.request.SignupRequest;
+import com.bigbang.bucktime.domain.user.dto.response.DuplicateResponse;
 import com.bigbang.bucktime.domain.user.dto.response.ShowUserResponse;
 import com.bigbang.bucktime.domain.user.service.UserService;
 import com.bigbang.bucktime.global.dto.Response;
@@ -57,5 +59,11 @@ public class UserController {
     @GetMapping("/show")
     public ResponseEntity<ShowUserResponse> showUser(HttpServletRequest request) {
         return ResponseEntity.ok(userService.showUser(request));
+    }
+
+    @Operation(summary = "중복 체크", description = "바디의 데이터중 duplicate가 number이면 전화번호 중복 체크, mail이면 이메일 중복 체크, 둘다 아니면 false 반환")
+    @PostMapping("/duplicate-check")
+    public ResponseEntity<DuplicateResponse> duplicateCheck(@RequestBody DuplicateRequest request) {
+        return ResponseEntity.ok(DuplicateResponse.of(userService.duplicateCheck(request)));
     }
 }

@@ -19,4 +19,8 @@ public interface UserMapper {
     void modifyUser(ModifyUserRequest modifyUserRequest);
 
     ShowUserResponse showUser(String userMail);
+
+    Integer countUserByPhoneNumber(String phoneNumber);
+
+    Integer countUserByUserMail(String userMail);
 }
