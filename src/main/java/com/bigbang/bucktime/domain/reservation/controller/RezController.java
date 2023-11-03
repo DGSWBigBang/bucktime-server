@@ -1,5 +1,6 @@
 package com.bigbang.bucktime.domain.reservation.controller;
 
+import com.bigbang.bucktime.domain.reservation.dto.entity.ReservationEntity;
 import com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest;
 import com.bigbang.bucktime.domain.reservation.dto.response.ShowReservationResponse;
 import com.bigbang.bucktime.domain.reservation.service.RezService;
@@ -29,14 +30,20 @@ public class RezController {
 
     @Operation(summary = "예약 정보 불러오기", description = "이미 시간이 지났거나 사용된 것 된 것도 나옴")
     @GetMapping("/show")
-    public ResponseEntity<List<ShowReservationResponse>> showReservation(@RequestParam("desk-idx") Integer deskIdx) {
-        return ResponseEntity.ok(rezService.showReservation(deskIdx));
+    public ResponseEntity<List<ShowReservationResponse>> showReservationList(@RequestParam("desk-idx") Integer deskIdx) {
+        return ResponseEntity.ok(rezService.showReservationList(deskIdx));
     }
 
-    @Operation(summary = "사용 시작(유저)", description = "예약한 사용자가 사용 시작할때")
-    @PutMapping("/modify/used")
-    public ResponseEntity<Response> modifyUsed(@RequestParam("rez-idx") Integer rezIdx) {
-        rezService.modifyUsed(rezIdx);
-        return ResponseEntity.ok(Response.of("사용 시작"));
+    @Operation(summary = "자기 예약 보기", description = "이미 시간이 지난거도 보임")
+    @GetMapping("/show/user")
+    public ResponseEntity<ShowReservationResponse> showReservation(HttpServletRequest request) {
+        return ResponseEntity.ok(rezService.showReservation(request));
+    }
+
+    @Operation(summary = "연장(유저)", description = "사용 연장 1시간 단위, hours는 몇시간 연장 할 것인지 desk-idx는 어떤 테이블을 연장 시킬 것인지")
+    @GetMapping("/extension")
+    public ResponseEntity<Response> extensionReservation(@RequestParam(name = "hours") Integer hours, @RequestParam("desk-idx") Integer deskIdx) {
+        rezService.extensionReservation(hours, deskIdx);
+        return ResponseEntity.ok(Response.of("연장 완료"));
     }
 }

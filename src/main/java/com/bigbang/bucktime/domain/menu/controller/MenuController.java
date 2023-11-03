@@ -1,14 +1,19 @@
 package com.bigbang.bucktime.domain.menu.controller;
 
+import com.bigbang.bucktime.domain.menu.dto.entity.MenuEntity;
 import com.bigbang.bucktime.domain.menu.dto.request.CreateMenuRequest;
 import com.bigbang.bucktime.domain.menu.dto.request.ModifyMenuRequest;
+import com.bigbang.bucktime.domain.menu.dto.response.ShowAllMenuResponse;
 import com.bigbang.bucktime.domain.menu.service.MenuService;
 import com.bigbang.bucktime.global.dto.Response;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/menu")
@@ -48,5 +53,12 @@ public class MenuController {
         } else {
             return ResponseEntity.badRequest().body(Response.of("데이터가 유효하지 않음"));
         }
+    }
+
+    @Operation(summary = "메뉴 리스트 불러오기(사장)", description = "리스트로 불러옴")
+    @GetMapping("/show/owner")
+    public ResponseEntity<List<ShowAllMenuResponse>> showMenuList(HttpServletRequest request) {
+        return ResponseEntity.ok(menuService.showMenuOwner(request));
+
     }
 }

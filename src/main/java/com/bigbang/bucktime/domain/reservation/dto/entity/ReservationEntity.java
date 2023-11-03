@@ -9,5 +9,4 @@ public class ReservationEntity {
     private String finishTime;
     private String userMail;
     private Integer deskIdx;
-    private Integer used;
 }

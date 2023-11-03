@@ -2,6 +2,7 @@ package com.bigbang.bucktime.domain.reservation.service;
 
 import com.bigbang.bucktime.domain.desk.dao.DeskMapper;
 import com.bigbang.bucktime.domain.reservation.dao.RezMapper;
+import com.bigbang.bucktime.domain.reservation.dto.InsertReservationData;
 import com.bigbang.bucktime.domain.reservation.dto.entity.ReservationEntity;
 import com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest;
 import com.bigbang.bucktime.domain.reservation.dto.response.ShowReservationResponse;
@@ -10,6 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,29 +24,50 @@ public class RezService {
     private final JwtProvider jwtProvider;
 
     public void createReservation(CreateRezRequest createRezRequest, HttpServletRequest request) {
-        createRezRequest.setUserMail(jwtProvider.getUserMail(request));
-        rezMapper.createReservation(createRezRequest);
+        LocalDateTime startTime = LocalDateTime.now();
+        LocalDateTime finishTime = startTime.plusSeconds(createRezRequest.getHours() * 60 * 60);
+        InsertReservationData insertData = InsertReservationData.builder()
+                .deskIdx(createRezRequest.getDeskIdx())
+                .startTime(startTime.toString())
+                .finishTime(finishTime.toString())
+                .userMail(jwtProvider.getUserMail(request))
+                .build();
+        rezMapper.createReservation(insertData);
     }
 
-    public List<ShowReservationResponse> showReservation(Integer cafeIdx) {
-        List<ReservationEntity> reservationEntityList = rezMapper.showReservation(cafeIdx);
+    public List<ShowReservationResponse> showReservationList(Integer cafeIdx) {
+        List<ReservationEntity> reservationEntityList = rezMapper.showReservationList(cafeIdx);
         List<ShowReservationResponse> reservationResponseList = new ArrayList<>();
         for (ReservationEntity reservation: reservationEntityList) {
             ShowReservationResponse reservationResponse = ShowReservationResponse.builder()
                     .rezIdx(reservation.getRezIdx())
                     .deskName(deskMapper.findDeskName(reservation.getDeskIdx()))
-                    .deskIdx(reservation.getDeskIdx())
                     .startTime(reservation.getStartTime())
                     .finishTime(reservation.getFinishTime())
                     .userMail(reservation.getUserMail())
-                    .used(reservation.getUsed() == 1 ? "사용" : "미사용")
                     .build();
             reservationResponseList.add(reservationResponse);
         }
         return reservationResponseList;
     }
 
-    public void modifyUsed(Integer rezIdx) {
-        rezMapper.modifyUsed(rezIdx);
+    public void extensionReservation(Integer hours, Integer deskIdx) {
+        String finishTime = rezMapper.getFinishTimeByDeskIdx(deskIdx);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime extensionFinishTime = LocalDateTime.parse(finishTime, formatter);
+        extensionFinishTime = extensionFinishTime.plusSeconds(hours * 60 * 60);
+        rezMapper.extensionFinishTime(deskIdx, extensionFinishTime.toString());
+    }
+
+    public ShowReservationResponse showReservation(HttpServletRequest request) {
+        String userMail = jwtProvider.getUserMail(request);
+        ReservationEntity reservation = rezMapper.showReservationByUserMail(userMail);
+        return ShowReservationResponse.builder()
+                .rezIdx(reservation.getRezIdx())
+                .deskName(deskMapper.findDeskName(reservation.getDeskIdx()))
+                .startTime(reservation.getStartTime())
+                .finishTime(reservation.getFinishTime())
+                .userMail(reservation.getUserMail())
+                .build();
     }
 }
