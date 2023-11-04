@@ -38,7 +38,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
                         .requestMatchers("/notice/create", "/notice/modify", "/notice/delete", "/cafe/create").hasAuthority("ADMIN")
                         .requestMatchers("/desk/create", "/desk/modify", "/desk/delete", "/cafe/modify", "/cafe/show/owner", "/order/modify/completion", "/order/show/owner", "/menu/create", "/menu/modify", "/menu/delete").hasAuthority("OWNER")
-                        .requestMatchers("/user/modify", "/user/show", "/user/delete", "/order/create", "/order/show/user", "/rez/modify/used", "/rez/create").hasAuthority("USER")
+                        .requestMatchers("/user/modify", "/user/show", "/user/delete", "/order/create", "/order/show/user", "/rez/modify/used", "/rez/create", "/rez/show/user", "/rez/extension").hasAuthority("USER")
                         .requestMatchers("/hello").hasAuthority("OWNER")
                         
                         .anyRequest().permitAll()
