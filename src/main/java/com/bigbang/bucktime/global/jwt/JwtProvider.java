@@ -91,6 +91,10 @@ public class JwtProvider {
         return this.parseClaims(this.getToken(request)).getSubject();
     }
 
+    public String getUserMail(String accessToken) {
+        return this.parseClaims(accessToken).getSubject();
+    }
+
     public JwtInfo refreshToken(String refresh) {
         UserDetails user = this.getUserDetails(refresh);
         return this.generateToken(user);

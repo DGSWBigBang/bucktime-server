@@ -1,0 +1,21 @@
+textarea {
+    resize: none;
+    width: 70vw;
+    height: 50vh;
+    font-size: 20px;
+}
+
+label {
+    display: block;
+    font-size: 25px;
+}
+
+.MenuNameInput {
+    width: 70vw;
+    font-size: 20px;
+}
+
+.MenuPriceInput {
+    width: 70vw;
+    font-size: 20px;
+}

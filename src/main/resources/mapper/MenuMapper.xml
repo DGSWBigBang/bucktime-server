@@ -13,19 +13,21 @@
         DELETE FROM menu WHERE menu_idx = #{menuIdx};
     </delete>
 
-    <select id="showAllMenu" parameterType="Integer" resultMap="showAllMenuResponse">
-        SELECT menu_idx, menu_name, menu_price FROM menu WHERE cafe_idx = #{cafeIdx};
+    <select id="showAllMenu" parameterType="Integer" resultMap="showMenuResponse">
+        SELECT menu_idx, menu_name, menu_description, menu_price FROM menu WHERE cafe_idx = #{cafeIdx};
     </select>
 
     <select id="showMenu" parameterType="Integer" resultMap="showMenuResponse">
         SELECT menu_idx, menu_name, menu_description, menu_price FROM menu WHERE menu_idx = #{menuIdx};
     </select>
 
-    <resultMap id="showAllMenuResponse" type="com.bigbang.bucktime.domain.menu.dto.response.ShowAllMenuResponse">
-        <id column="menu_idx" property="menuIdx"/>
-        <result column="menu_name" property="menuName"/>
-        <result column="menu_price" property="menuPrice"/>
-    </resultMap>
+    <select id="showAllMenuOwner" parameterType="Integer" resultMap="showMenuResponse">
+        SELECT menu_idx, menu_name, menu_description, menu_price FROM menu WHERE cafe_idx = #{cafeIdx};
+    </select>
+
+    <select id="countMenuNumber" parameterType="Integer" resultType="Integer">
+        SELECT COUNT(*) FROM menu WHERE cafe_idx = #{cafeIdx} AND menu_idx = #{menuIdx};
+    </select>
 
     <resultMap id="showMenuResponse" type="com.bigbang.bucktime.domain.menu.dto.response.ShowMenuResponse">
         <id column="menu_idx" property="menuIdx"/>
