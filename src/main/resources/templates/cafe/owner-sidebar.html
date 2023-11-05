@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="navbar" th:fragment="owner-layout">
+  <img th:src="@{/images/logo.png}" class="logoImg" th:onclick="|move('')|">
+
+  <div class="itemDiv">
+    <a href="/owner/home" class="items">Home</a>
+    <a href="/owner/menu" class="items">Menu</a>
+    <a href="/owner/order" class="items">ORDER</a>
+    <a href="/owner/seat" class="items">SEAT</a>
+  </div>
+</div>
+</html>

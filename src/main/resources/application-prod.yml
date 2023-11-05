@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: root_gwon
+    password: root_gwon_password
   config:
     activate:
       on-profile: prod

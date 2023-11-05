@@ -2,10 +2,8 @@ package com.bigbang.bucktime.domain.menu.service;
 
 import com.bigbang.bucktime.domain.cafe.dao.CafeMapper;
 import com.bigbang.bucktime.domain.menu.dao.MenuMapper;
-import com.bigbang.bucktime.domain.menu.dto.entity.MenuEntity;
 import com.bigbang.bucktime.domain.menu.dto.request.CreateMenuRequest;
 import com.bigbang.bucktime.domain.menu.dto.request.ModifyMenuRequest;
-import com.bigbang.bucktime.domain.menu.dto.response.ShowAllMenuResponse;
 import com.bigbang.bucktime.domain.menu.dto.response.ShowMenuResponse;
 import com.bigbang.bucktime.global.jwt.JwtProvider;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,7 +31,7 @@ public class MenuService {
         menuMapper.deleteMenu(menuIdx);
     }
 
-    public List<ShowAllMenuResponse> showAllMenu(Integer cafeIdx) {
+    public List<ShowMenuResponse> showAllMenu(Integer cafeIdx) {
         return menuMapper.showAllMenu(cafeIdx);
     }
 
@@ -41,9 +39,21 @@ public class MenuService {
         return menuMapper.showMenu(menuIdx);
     }
 
-    public List<ShowAllMenuResponse> showMenuOwner(HttpServletRequest request) {
+    public List<ShowMenuResponse> showMenuOwner(HttpServletRequest request) {
         String userMail = jwtProvider.getUserMail(request);
         Integer cafeIdx = cafeMapper.showOwnerCafeInfo(userMail).getCafeIdx();
         return menuMapper.showAllMenu(cafeIdx);
+    }
+
+    public List<ShowMenuResponse> showMenuOwner(String accessToken) {
+        String userMail = jwtProvider.getUserMail(accessToken);
+        Integer cafeIdx = cafeMapper.showOwnerCafeInfo(userMail).getCafeIdx();
+        return menuMapper.showAllMenu(cafeIdx);
+    }
+
+    public Boolean haveDeskCheck(String accessToken, Integer menuIdx) {
+        String userMail = jwtProvider.getUserMail(accessToken);
+        Integer cafeIdx = cafeMapper.showOwnerCafeInfo(userMail).getCafeIdx();
+        return menuMapper.countMenuNumber(cafeIdx, menuIdx) >= 1;
     }
 }

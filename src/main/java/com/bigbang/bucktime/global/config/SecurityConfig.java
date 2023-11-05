@@ -42,7 +42,6 @@ public class SecurityConfig {
                         .requestMatchers("/user/modify", "/user/show", "/user/delete", "/order/create", "/order/show/user", "/rez/modify/used", "/rez/create", "/rez/show/user", "/rez/extension").hasAuthority("USER")
                         .requestMatchers("/hello").hasAuthority("OWNER")
                         .requestMatchers("/front/cafe/**").hasAnyAuthority("OWNER")
-                        
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)

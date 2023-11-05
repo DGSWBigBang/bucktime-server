@@ -1,9 +1,8 @@
 package com.bigbang.bucktime.domain.menu.controller;
 
-import com.bigbang.bucktime.domain.menu.dto.entity.MenuEntity;
 import com.bigbang.bucktime.domain.menu.dto.request.CreateMenuRequest;
 import com.bigbang.bucktime.domain.menu.dto.request.ModifyMenuRequest;
-import com.bigbang.bucktime.domain.menu.dto.response.ShowAllMenuResponse;
+import com.bigbang.bucktime.domain.menu.dto.response.ShowMenuResponse;
 import com.bigbang.bucktime.domain.menu.service.MenuService;
 import com.bigbang.bucktime.global.dto.Response;
 import io.swagger.v3.oas.annotations.Operation;
@@ -57,7 +56,7 @@ public class MenuController {
 
     @Operation(summary = "메뉴 리스트 불러오기(사장)", description = "리스트로 불러옴")
     @GetMapping("/show/owner")
-    public ResponseEntity<List<ShowAllMenuResponse>> showMenuList(HttpServletRequest request) {
+    public ResponseEntity<List<ShowMenuResponse>> showMenuList(HttpServletRequest request) {
         return ResponseEntity.ok(menuService.showMenuOwner(request));
 
     }
