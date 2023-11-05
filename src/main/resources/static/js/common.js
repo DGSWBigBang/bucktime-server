@@ -23,7 +23,7 @@ jQuery.fn.serializeObject = function() {
 };
 
 
-jQuery.fn.checkRequired = function() {
+jQuery.fn.checkRequired = function(warning) {
 	const elem = $(this[0]);
     let valid;
     
@@ -31,7 +31,7 @@ jQuery.fn.checkRequired = function() {
         if (this[0].tagName && this[0].tagName.toUpperCase() == "INPUT") {
         	const type = $(elem).attr("type").toUpperCase() || "TEXT";
         	
-        	if (type == "TEXT") {
+        	if (type == "TEXT" || type == "PASSWORD") {
 				valid = elem.val().trim().length > 0;
 			} else if (type == "RADIO") {
 				valid = $("[name='" + elem.attr("name") + "']").is(":checked").length > 0;
@@ -40,8 +40,16 @@ jQuery.fn.checkRequired = function() {
 			valid = this[0].value.trim().length > 0;
         } 
     } catch (e) {
-		console.error(e.message);
+		throw(e);
     } finally {
-		console.log("valid", valid);		
+	
+		if (warning && !valid) {
+			$(this[0]).focus();
+			//$(this[0]).css("border", "1px solid red");
+			alert("값을 입력하세요.");
+		}
+	
+		return valid;
     }
 };
+
