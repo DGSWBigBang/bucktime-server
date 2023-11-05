@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +13,17 @@
     		text-align: right;
     	}
     	
-    	
-    	
     </style>
+    
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    
+    <script>
+    
+    	$(document).ready(() => {
+    		console.log("init");
+    	});	
+    
+    </script>
 </head>
 <body>
 	<h1>TIMEBUCKS</h1>

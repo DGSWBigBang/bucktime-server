@@ -7,3 +7,7 @@ spring:
   config:
     activate:
       on-profile: jbjeong
+  
+  devtools:
+    livereload:
+      enabled: true
