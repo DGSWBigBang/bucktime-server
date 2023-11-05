@@ -13,33 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@Slf4j
 @Controller
-@RequestMapping("/owner")
+@RequestMapping("/front/cafe")
 @RequiredArgsConstructor
 public class OwnerController {
     private final MenuService menuService;
 
-    @GetMapping("/menu")
-    public String menu(Model model, @CookieValue("accessToken") String accessToken) {
-        System.out.println(accessToken);
-        try {
-            List<ShowMenuResponse> menuResponse = menuService.showMenuOwner(accessToken);
-            model.addAttribute("menuList", menuResponse);
-            return "owner/menu";
-        } catch (Exception e) {
-            return "redirect:/login";
-        }
-    }
 
-    @GetMapping("/menu/modify")
-    public String menuModify(Model model, @RequestParam("menu-idx") Integer menuIdx, @CookieValue("accessToken") String accessToken) {
-        if(menuService.haveDeskCheck(accessToken, menuIdx)) {
-            model.addAttribute("menuIdx", menuIdx);
-            model.addAttribute("menu", menuService.showMenu(menuIdx));
-            return "owner/modify-menu";
-        } else {
-            return "redirect:/menu";
-        }
-    }
 }

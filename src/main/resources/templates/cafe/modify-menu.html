@@ -11,7 +11,7 @@
     <body>
         <div th:replace="~{owner/owner-sidebar.html :: owner-layout}"></div>
         <div class="MainScreen">
-            <div class>
+            <div class="InputForm">
                 <div>
                     <label for="menuName">메뉴 이름</label>
                     <input type="text" id="menuName" th:value="${menu.menuName}" class="MenuNameInput">
@@ -30,8 +30,6 @@
     </body>
 
     <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}" type="text/javascript"></script>
-    <script th:src="@{/js/modify-menu.js}" type="text/javascript">
-    </script>
     <script type="text/javascript">
         let menuIdx = [[${menuIdx}]];
 
@@ -44,7 +42,7 @@
             }
 
             $.ajax({
-                method: "POST",
+                method: "put",
                 url: "/menu/modify",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(postData),
