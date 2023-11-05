@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 public class CreateRezRequest {
-    private String startTime;
-    private String finishTime;
+    private Integer hours;
     private Integer deskIdx;
-    private String userMail;
 }

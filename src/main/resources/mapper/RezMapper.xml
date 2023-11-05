@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bigbang.bucktime.domain.reservation.dao.RezMapper">
-    <insert id="createReservation" parameterType="com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest">
+    <insert id="createReservation" parameterType="com.bigbang.bucktime.domain.reservation.dto.InsertReservationData">
         INSERT INTO reservation (start_time, finish_time, desk_idx, user_mail) VALUES (#{startTime}, #{finishTime}, #{deskIdx}, #{userMail});
     </insert>
 
-    <select id="showReservation" parameterType="Integer" resultMap="reservationEntity">
+    <select id="showReservationList" parameterType="Integer" resultMap="reservationEntity">
         SELECT * FROM reservation WHERE desk_idx = #{deskIdx};
     </select>
 
-    <update id="modifyUsed" parameterType="Integer">
-        UPDATE reservation SET used = '1' WHERE rez_idx = #{rezIdx};
+    <select id="getFinishTimeByDeskIdx" parameterType="Integer" resultType="String">
+        SELECT finish_time FROM reservation WHERE desk_idx = #{deskIdx} LIMIT 1;
+    </select>
+
+    <update id="extensionFinishTime">
+        UPDATE reservation SET finish_time = #{finishTime} WHERE desk_idx = #{deskIdx};
     </update>
+
+    <select id="showReservationByUserMail" parameterType="String" resultMap="reservationEntity">
+        SELECT * FROM reservation WHERE user_mail = #{userMail};
+    </select>
 
     <resultMap id="reservationEntity" type="com.bigbang.bucktime.domain.reservation.dto.entity.ReservationEntity">
         <id column="rez_idx" property="rezIdx"/>
@@ -19,6 +27,5 @@
         <result column="finish_time" property="finishTime"/>
         <result column="user_mail" property="userMail"/>
         <result column="desk_idx" property="deskIdx"/>
-        <result column="used" property="used"/>
     </resultMap>
 </mapper>

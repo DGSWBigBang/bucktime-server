@@ -1,8 +1,10 @@
 package com.bigbang.bucktime.domain.reservation.dao;
 
+import com.bigbang.bucktime.domain.reservation.dto.InsertReservationData;
 import com.bigbang.bucktime.domain.reservation.dto.entity.ReservationEntity;
 import com.bigbang.bucktime.domain.reservation.dto.request.CreateRezRequest;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,9 +12,13 @@ import java.util.List;
 @Mapper
 @Repository
 public interface RezMapper {
-    void createReservation(CreateRezRequest createRezRequest);
+    void createReservation(InsertReservationData insertReservationData);
 
-    List<ReservationEntity> showReservation(Integer cafeIdx);
+    List<ReservationEntity> showReservationList(Integer cafeIdx);
 
-    void modifyUsed(Integer rezIdx);
+    ReservationEntity showReservationByUserMail(String userMail);
+
+    String getFinishTimeByDeskIdx(Integer deskIdx);
+
+    void extensionFinishTime(@Param(value = "deskIdx") Integer deskIdx, @Param(value = "finishTime") String finishTime);
 }

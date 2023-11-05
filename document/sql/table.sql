@@ -8,9 +8,13 @@ password VARCHAR(80) NOT NULL
 
 CREATE TABLE cafe (
 cafe_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+cafe_description TEXT,
 cafe_address VARCHAR(50) NOT NULL,
 cafe_name VARCHAR(30) NOT NULL,
 owner_mail VARCHAR(50) NOT NULL,
+open_time CHAR(4) NOT NULL,
+close_time CHAR(4) NOT NULL,
+call_number VARCHAR(20) NOT NULL,
 FOREIGN KEY (owner_mail) REFERENCES user(user_mail) ON DELETE CASCADE
 );
 
@@ -18,6 +22,8 @@ CREATE TABLE desk (
 desk_idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 desk_name VARCHAR(10) NOT NULL,
 cafe_idx INT NOT NULL,
+price VARCHAR(10) NOT NULL,
+capacity SMALLINT NOT NULL DEFAULT 4,
 FOREIGN KEY (cafe_idx) REFERENCES cafe(cafe_idx)
 );
 

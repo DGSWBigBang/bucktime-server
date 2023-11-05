@@ -11,6 +11,4 @@ public class ShowReservationResponse {
     private String startTime;
     private String finishTime;
     private String userMail;
-    private Integer deskIdx;
-    private String used;
 }

@@ -7,4 +7,6 @@ public class DeskEntity {
     private Integer deskIdx;
     private String deskName;
     private Integer cafeIdx;
+    private Integer price;
+    private Long capacity;
 }

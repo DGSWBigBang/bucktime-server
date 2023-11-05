@@ -2,6 +2,7 @@ package com.bigbang.bucktime.domain.order.controller;
 
 import com.bigbang.bucktime.domain.order.dto.reponse.ShowOrderResponse;
 import com.bigbang.bucktime.domain.order.service.OrderService;
+import com.bigbang.bucktime.global.dto.Response;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,9 +21,9 @@ public class OrderController {
 
     @Operation(summary = "주문(유저)")
     @PostMapping("/create")
-    public ResponseEntity<String> createOrder(@RequestParam(value = "menu-idx") Integer menuIdx, HttpServletRequest request) {
+    public ResponseEntity<Response> createOrder(@RequestParam(value = "menu-idx") Integer menuIdx, HttpServletRequest request) {
         orderService.createOrder(menuIdx, request);
-        return ResponseEntity.ok("주문 완료");
+        return ResponseEntity.ok(Response.of("주문 완료"));
     }
 
     @Operation(summary = "주문 정보 불러오기(유저)")
@@ -39,8 +40,8 @@ public class OrderController {
 
     @Operation(summary = "메뉴 완성(사장)")
     @PutMapping("/modify/completion")
-    public ResponseEntity<String> modifyCompletion(@RequestParam("order-idx") Integer orderIdx) {
+    public ResponseEntity<Response> modifyCompletion(@RequestParam("order-idx") Integer orderIdx) {
         orderService.modifyCompletion(orderIdx);
-        return ResponseEntity.ok("메뉴 완성");
+        return ResponseEntity.ok(Response.of("메뉴 완성"));
     }
 }

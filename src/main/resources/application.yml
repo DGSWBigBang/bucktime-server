@@ -23,4 +23,4 @@ server:
     mvc:
         static-path-pattern: /static/**
       
-    default: dev
+    #default: dev

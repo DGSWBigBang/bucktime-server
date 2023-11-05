@@ -1,9 +1,11 @@
 package com.bigbang.bucktime.domain.user.service;
 
 import com.bigbang.bucktime.domain.user.dao.UserMapper;
+import com.bigbang.bucktime.domain.user.dto.request.DuplicateRequest;
 import com.bigbang.bucktime.domain.user.dto.request.LoginRequest;
 import com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest;
 import com.bigbang.bucktime.domain.user.dto.request.SignupRequest;
+import com.bigbang.bucktime.domain.user.dto.response.DuplicateResponse;
 import com.bigbang.bucktime.domain.user.dto.response.ShowUserResponse;
 import com.bigbang.bucktime.global.jwt.JwtInfo;
 import com.bigbang.bucktime.global.jwt.JwtProvider;
@@ -46,5 +48,15 @@ public class UserService {
 
     public ShowUserResponse showUser(HttpServletRequest request) {
         return userMapper.showUser(jwtProvider.getUserMail(request));
+    }
+
+    public Boolean duplicateCheck(DuplicateRequest request) {
+        if(request.getDuplicate().equals("number")) {
+            return userMapper.countUserByPhoneNumber(request.getData()) >= 1;
+        } else if (request.getDuplicate().equals("mail")) {
+            return userMapper.countUserByUserMail(request.getData()) >= 1;
+        } else {
+            return false;
+        }
     }
 }
