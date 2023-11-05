@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBUCKS</title>
+    <style>
+    	.input label {
+    		display: inline-block;
+    		width: 7rem;
+    		margin: 5px 20px 5px 5px;
+    		text-align: right;
+    	}
+    	
+    </style>
+    
+</head>
+<body>
+	<h1>LOGIN</h1>
+	<div class="input">
+		<form id="theForm">
+			<div>
+				<label>이메일</label>
+				<input type="text" name="userMail" required="required">
+			</div>
+			<div>
+				<label>비밀번호</label>
+				<input type="password" name="password" required="required">
+			</div>
+			<div>
+				<label></label>
+				<button type="button" id="btn_login">로그인</button>
+			</div>
+		</form>
+	</div>
+	
+	
+</body>
+
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery-cookie/1.4.1-1/jquery.cookie.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/user/signin.js}"></script>
+   
+<script>
+   
+</script>
+
+</html>

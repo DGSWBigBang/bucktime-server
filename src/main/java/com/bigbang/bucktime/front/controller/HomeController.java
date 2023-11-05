@@ -24,5 +24,13 @@ public class HomeController {
 			@PathVariable("pageName") String pageName) {
 		return "user/" + pageName;
 	}
-	
+
+	@GetMapping("/cafe/{pageName}")
+	public String cafePages(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			@PathVariable("pageName") String pageName) {
+		return "cafe/" + pageName;
+	}
+
 }

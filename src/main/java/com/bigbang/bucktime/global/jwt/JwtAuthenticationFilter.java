@@ -2,6 +2,7 @@ package com.bigbang.bucktime.global.jwt;
 
 import java.io.IOException;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -19,6 +20,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String accessToken = jwtProvider.getToken(request);
+        LoggerFactory.getLogger(getClass()).info("[ACCESS TOKEN] {}", accessToken);
         if(accessToken != null && jwtProvider.validateToken(accessToken)) {
             Authentication authentication = jwtProvider.getAuthentication(accessToken);
             SecurityContextHolder.getContext().setAuthentication(authentication);

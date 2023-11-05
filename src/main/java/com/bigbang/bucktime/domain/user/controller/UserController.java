@@ -38,13 +38,14 @@ public class UserController {
 
     @Operation(summary = "로그인", description = "로그인 방식은 jwt 방식임 헤더의 Authorization를 Bearer (accessToken)로 설정 해야함")
     @PostMapping("/login")
-    public ResponseEntity<JwtInfo> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         JwtInfo jwtInfo = userService.login(loginRequest);
-        if(jwtInfo == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(userService.login(loginRequest));
-        }
+        
+        try {
+        	return ResponseEntity.ok(userService.login(loginRequest));
+        } catch (Exception e) {
+        	return ResponseEntity.status(500).body(e.getMessage());
+		}
     }
 
     @Operation(summary = "회원 탈퇴(유저)")
