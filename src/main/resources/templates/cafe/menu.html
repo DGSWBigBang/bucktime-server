@@ -9,31 +9,47 @@
         <link th:href="@{/css/owner-sidebar.css}" type="text/css" rel="stylesheet">
     </head>
     <body>
-        <div th:replace="~{owner/owner-sidebar.html :: owner-layout}"></div>
+        <div th:replace="~{cafe/owner-sidebar.html :: owner-layout}"></div>
         <div>
             <div class="mainScreen">
                 <span class="title">메뉴 정보</span>
 
                 <table class="menu">
-                    <tr>
-                        <th>메뉴 고유 번호</th>
-                        <th>메뉴 이름</th>
-                        <th>메뉴 설명</th>
-                        <th>메뉴 가격</th>
-                        <th>수정</th>
-                    </tr>
-                    <tr th:each="menuData, i: ${menuList}" >
-                        <td th:text= "${menuData.menuIdx}"></td>
-                        <td th:text="${menuData.menuName}"></td>
-                        <td th:text="${menuData.menuDescription}"></td>
-                        <td th:text="${menuData.menuPrice}"></td>
-                        <td><button th:onclick="|move('owner/menu/modify?menu-idx='+${menuData.menuIdx})|">수정하기</button></td>
-                    </tr>
+                    <thead>
+	                    <tr>
+	                        <th>메뉴 고유 번호</th>
+	                        <th>메뉴 이름</th>
+	                        <th>메뉴 설명</th>
+	                        <th>메뉴 가격</th>
+	                        <th>수정</th>
+	                    </tr>
+                    </thead>
+                    <tbody id="list_body">
+                    </tbody>
+                    
                 </table>
             </div>
         </div>
     </body>
 
-    <script th:src="@{/js/menu.js}" type="text/javascript"></script>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery-tmpl/jquery.tmpl.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/cafe/menu.js}"></script>
+
+<script id="listTemplate" type="text/x-jquery-tmpl">
+                    	<tr>
+                    		<td>${menuIdx}</td>
+                    		<td>${menuName}</td>
+                    		<td>${menuDescription}</td>
+                    		<td>${menuPrice}</td>
+                    		<td>
+								<button class="btn_modify">수정</button>                    		
+							</td>
+                    	</tr>
+
+</script>
+
+
 
 </html>
