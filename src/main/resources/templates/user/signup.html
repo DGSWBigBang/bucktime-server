@@ -15,43 +15,47 @@
     	
     </style>
     
-    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-    
-    <script>
-    
-    	$(document).ready(() => {
-    		console.log("init");
-    	});	
-    
-    </script>
 </head>
 <body>
 	<h1>TIMEBUCKS</h1>
 	<div class="input">
-		<div>
-			<label>이메일</label>
-			<input type="text" name="userMail">
-		</div>
-		<div>
-			<label>이름</label>
-			<input type="text" name="userName">
-		</div>
-		<div>
-			<label>전화번호</label>
-			<input type="text" name="phoneNumber">
-		</div>
-		<div>
-			<label>비밀번호</label>
-			<input type="password" name="userPassword">
-		</div>
-		<div>
-			<label>비밀번호확인</label>
-			<input type="password" name="userPasswordConfirm">
-		</div>
-		<div>
-			<label></label>
-			<button>저장</button>
-		</div>
+		<form id="theForm" method="post" th:action="@{/user/create}">
+			<div>
+				<label>이메일</label>
+				<input type="text" name="userMail" required="required">
+			</div>
+			<div>
+				<label>이름</label>
+				<input type="text" name="userName" required="required">
+			</div>
+			<div>
+				<label>전화번호</label>
+				<input type="text" name="phoneNumber">
+			</div>
+			<div>
+				<label>비밀번호</label>
+				<input type="password" name="userPassword" required="required">
+			</div>
+			<div>
+				<label>비밀번호확인</label>
+				<input type="password" name="userPasswordConfirm">
+			</div>
+			<div>
+				<label></label>
+				<button type="button" id="btn_save">저장</button>
+			</div>
+		</form>
 	</div>
+	
+	
 </body>
+
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/user/signup.js}"></script>
+   
+<script>
+   
+</script>
+
 </html>

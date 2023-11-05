@@ -30,6 +30,12 @@ public class UserController {
         return ResponseEntity.ok(Response.of("회원가입 완료"));
     }
 
+    @PostMapping("/create1")
+    public ResponseEntity<Response> createUser1(@ModelAttribute SignupRequest signupRequest) {
+        userService.addAccount(signupRequest);
+        return ResponseEntity.ok(Response.of("회원가입 완료"));
+    }
+
     @Operation(summary = "로그인", description = "로그인 방식은 jwt 방식임 헤더의 Authorization를 Bearer (accessToken)로 설정 해야함")
     @PostMapping("/login")
     public ResponseEntity<JwtInfo> login(@RequestBody LoginRequest loginRequest) {
