@@ -29,7 +29,7 @@
 					success: function(response) {
 						console.log("response", response);
 						alert("회원 가입이 완료되었습니다.");
-						// TODO : 다음 페이지 지정
+						location.href = "/front/user/signin";
 					},
 					
 					fail: function(xhr) {
