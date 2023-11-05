@@ -10,5 +10,7 @@ public class ShowOrderResponse {
     private String orderTime;
     private String menuName;
     private String cafeName;
+    private Integer menuPrice;
+    private String userName;
     private String completion;
 }

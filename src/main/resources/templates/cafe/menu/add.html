@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>TIMEBUCKS</title>
+      <link rel="stylesheet" th:href="@{/css/owner-sidebar.css}" type="text/css">
+      <link th:href="@{/css/add-menu.css}" type="text/css" rel="stylesheet">
+  </head>
+    <body>
+      <div th:replace="~{cafe/owner-sidebar.html :: owner-layout}"></div>
+      <div class="MainScreen">
+          <div class="InputForm">
+              <div>
+                  <label for="menuName">메뉴 이름</label>
+                  <input type="text" id="menuName" class="MenuNameInput">
+              </div>
+              <div>
+                  <label for="menuDescription">메뉴 설명</label>
+                  <textarea type="text" id="menuDescription"></textarea>
+              </div>
+              <div>
+                  <label for="menuPrice">메뉴 가격</label>
+                  <input type="number" id="menuPrice" class="MenuPriceInput">
+              </div>
+              <button onclick="createMenuRequest()" class="RequestButton">추가</button>
+          </div>
+      </div>
+    </body>
+  <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+  <script th:src="@{/js/pages/cafe/add-menu.js}"></script>
+  <script th:src="@{/js/common.js}"></script>
+</html>

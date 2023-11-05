@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+}
+
+#Container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/background.png);
+    background-size: cover;
+}
+
+#Navbar {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 75px;
+}
+
+#NavLogo {
+    position: relative;
+    width: 125px;
+    left: 25px;
+}
+
+.Sign {
+    position: relative;
+    background-color: transparent;
+    border: 2.5px solid white;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 95px;
+    height: 45px;
+    color: white;
+}
+
+#SignIn {
+    left: calc(100% - 360px);
+}
+
+#SignUp {
+    left: calc(100% - 350px);
+}
+
+.PhraseBox {
+    position: relative;
+    top: 25px;
+    width: 1000px;
+    height: 175px;
+    margin: auto;
+}
+.PhraseText {
+    font-size: 35px;
+    color: white;
+}
+
+.AuthorFirst {
+    font-size: 25px;
+    color: white;
+}
+
+.AuthorLast {
+    font-size: 25px;
+    color: white;
+}
+
+#Title {
+    position: relative;
+    top: 200px;
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+#BigLogo {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    top: 250px;
+    width: 500px;
+}

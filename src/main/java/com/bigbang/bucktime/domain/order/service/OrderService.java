@@ -1,5 +1,7 @@
 package com.bigbang.bucktime.domain.order.service;
 
+import com.bigbang.bucktime.domain.menu.dao.MenuMapper;
+import com.bigbang.bucktime.domain.menu.dto.response.ShowMenuResponse;
 import com.bigbang.bucktime.domain.order.dao.OrderMapper;
 import com.bigbang.bucktime.domain.order.dto.entity.OrderEntity;
 import com.bigbang.bucktime.domain.order.dto.reponse.ShowOrderResponse;
@@ -16,6 +18,7 @@ import java.util.List;
 public class OrderService {
     private final JwtProvider jwtProvider;
     private final OrderMapper orderMapper;
+    private final MenuMapper menuMapper;
 
     public void createOrder(Integer menuIdx, HttpServletRequest request) {
         String userMail = jwtProvider.getUserMail(request);
@@ -27,11 +30,13 @@ public class OrderService {
         List<ShowOrderResponse> orderResponseList = new ArrayList<>();
         for (OrderEntity order: orderList) {
             Integer cafeIdx = orderMapper.findCafeIdx(order.getMenuIdx());
+            ShowMenuResponse menuData = menuMapper.showMenu(order.getMenuIdx());
             ShowOrderResponse orderResponse = ShowOrderResponse.builder()
                     .orderIdx(order.getOrderIdx())
                     .orderTime(order.getOrderTime())
-                    .menuName(orderMapper.findMenuName(order.getMenuIdx()))
+                    .menuName(menuData.getMenuName())
                     .cafeName(orderMapper.findCafeName(cafeIdx))
+                    .menuPrice(menuData.getMenuPrice())
                     .completion(order.getCompletion() == 1 ? "완료" : "대기중")
                     .build();
             orderResponseList.add(orderResponse);
@@ -49,6 +54,8 @@ public class OrderService {
                     .orderTime(order.getOrderTime())
                     .menuName(orderMapper.findMenuName(order.getMenuIdx()))
                     .cafeName(orderMapper.findCafeName(cafeIdx))
+                    .menuPrice(menuMapper.showMenu(order.getMenuIdx()).getMenuPrice())
+                    .userName(order.getUserMail())
                     .completion(order.getCompletion() == 1 ? "완료" : "대기중")
                     .build();
             orderResponseList.add(orderResponse);

@@ -1,6 +1,5 @@
 package com.bigbang.bucktime.front.controller;
 
-import com.bigbang.bucktime.domain.menu.dto.response.ShowMenuResponse;
 import com.bigbang.bucktime.domain.menu.service.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -10,13 +9,16 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/front")
 @RequiredArgsConstructor
 public class HomeController {
 	private final MenuService menuService;
+
+	@GetMapping("")
+	public String home() {
+		return "home";
+	}
 
 	@GetMapping("/hello")
 	public String hello() {
@@ -36,17 +38,25 @@ public class HomeController {
 			HttpServletRequest request,
 			HttpServletResponse response,
 			@PathVariable("pageName") String pageName) {
+		if(pageName.equals("menu")) {
+			return "cafe/menu/index";
+		}
 		return "cafe/" + pageName;
 	}
 
 	@GetMapping("/cafe/menu/modify")
-	public String menuModify(Model model, @RequestParam("menu-idx") Integer menuIdx, @CookieValue("accessToken") String accessToken) {
-		if(menuService.haveDeskCheck(accessToken, menuIdx)) {
+	public String menuModify(Model model, @RequestParam("menu-idx") Integer menuIdx, HttpServletRequest request) {
+		if(menuService.haveDeskCheck(request, menuIdx)) {
 			model.addAttribute("menuIdx", menuIdx);
 			model.addAttribute("menu", menuService.showMenu(menuIdx));
-			return "cafe/modify-menu";
+			return "cafe/menu/modify-menu";
 		} else {
 			return "redirect:/front/menu";
 		}
+	}
+
+	@GetMapping("/cafe/menu/{pageName}")
+	public String menuPages(@PathVariable("pageName") String pageName) {
+		return "cafe/menu/" + pageName;
 	}
 }

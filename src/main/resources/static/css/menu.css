@@ -15,3 +15,11 @@
 td, th {
     text-align: center;
 }
+
+.AddButton {
+    position: fixed;
+    right: 5vw;
+    bottom: 10vh;
+    width: 10vw;
+    height: 5vh;
+}

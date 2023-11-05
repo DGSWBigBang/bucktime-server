@@ -19,7 +19,9 @@ public class MenuService {
     private final MenuMapper menuMapper;
     private final JwtProvider jwtProvider;
 
-    public void createMenu(CreateMenuRequest createMenuRequest) {
+    public void createMenu(CreateMenuRequest createMenuRequest, HttpServletRequest request) {
+        String userMail = jwtProvider.getUserMail(request);
+        createMenuRequest.setCafeIdx(cafeMapper.showOwnerCafeInfo(userMail).getCafeIdx());
         menuMapper.createMenu(createMenuRequest);
     }
 
@@ -45,14 +47,8 @@ public class MenuService {
         return menuMapper.showAllMenu(cafeIdx);
     }
 
-    public List<ShowMenuResponse> showMenuOwner(String accessToken) {
-        String userMail = jwtProvider.getUserMail(accessToken);
-        Integer cafeIdx = cafeMapper.showOwnerCafeInfo(userMail).getCafeIdx();
-        return menuMapper.showAllMenu(cafeIdx);
-    }
-
-    public Boolean haveDeskCheck(String accessToken, Integer menuIdx) {
-        String userMail = jwtProvider.getUserMail(accessToken);
+    public Boolean haveDeskCheck(HttpServletRequest request, Integer menuIdx) {
+        String userMail = jwtProvider.getUserMail(request);
         Integer cafeIdx = cafeMapper.showOwnerCafeInfo(userMail).getCafeIdx();
         return menuMapper.countMenuNumber(cafeIdx, menuIdx) >= 1;
     }

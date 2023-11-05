@@ -23,8 +23,8 @@ public class MenuController {
 
     @Operation(summary = "메뉴 생성")
     @PostMapping("/create")
-    public ResponseEntity<Response> createMenu(@RequestBody CreateMenuRequest createMenuRequest) {
-        menuService.createMenu(createMenuRequest);
+    public ResponseEntity<Response> createMenu(@RequestBody CreateMenuRequest createMenuRequest, HttpServletRequest request) {
+        menuService.createMenu(createMenuRequest, request);
         return ResponseEntity.ok(Response.of("메뉴 생성 완료"));
     }
 
