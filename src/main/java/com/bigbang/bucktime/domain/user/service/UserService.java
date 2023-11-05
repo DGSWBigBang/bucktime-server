@@ -1,22 +1,25 @@
 package com.bigbang.bucktime.domain.user.service;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import com.bigbang.bucktime.domain.user.dao.UserMapper;
 import com.bigbang.bucktime.domain.user.dto.request.DuplicateRequest;
 import com.bigbang.bucktime.domain.user.dto.request.LoginRequest;
 import com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest;
 import com.bigbang.bucktime.domain.user.dto.request.SignupRequest;
-import com.bigbang.bucktime.domain.user.dto.response.DuplicateResponse;
 import com.bigbang.bucktime.domain.user.dto.response.ShowUserResponse;
 import com.bigbang.bucktime.global.jwt.JwtInfo;
 import com.bigbang.bucktime.global.jwt.JwtProvider;
+
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
     private final UserDetailService userDetailService;
     private final JwtProvider jwtProvider;
@@ -29,11 +32,17 @@ public class UserService {
     }
 
     public JwtInfo login(LoginRequest loginRequest) {
+    	log.info("LOGIN {}", loginRequest);
         UserDetails user = userDetailService.loadUserByUsername(loginRequest.getUserMail());
-        if(bCryptPasswordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
-            return jwtProvider.generateToken(user);
+        
+        if (user == null) {
+        	throw new RuntimeException("User not found");
         } else {
-            return null;
+            if(bCryptPasswordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
+                return jwtProvider.generateToken(user);
+            } else {
+                throw new RuntimeException("Password mismatch");
+            }
         }
     }
 

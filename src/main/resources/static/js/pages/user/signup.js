@@ -28,6 +28,8 @@
 					
 					success: function(response) {
 						console.log("response", response);
+						alert("회원 가입이 완료되었습니다.");
+						// TODO : 다음 페이지 지정
 					},
 					
 					fail: function(xhr) {
@@ -38,9 +40,26 @@
 		},
 		
 		checkInput: function() {
-			$("#theForm [name='userMail']").checkRequired();
+			let valid = true;
 			
-			return false;
+			valid &= $("#theForm [name='userMail']").checkRequired(valid);
+			valid &= $("#theForm [name='userName']").checkRequired(valid);
+			valid &= $("#theForm [name='phoneNumber']").checkRequired(valid);
+			valid &= $("#theForm [name='userPassword']").checkRequired(valid);
+
+
+			if (valid) {
+				valid = 
+						($("#theForm [name='userPassword']").val().trim() 
+								== $("#theForm [name='userPasswordConfirm']").val().trim());
+								
+				if (!valid) {
+					$("#theForm [name='userPasswordConfirm']").focus();
+					alert("비밀번호를 확인하세요.");
+				}								
+			}
+			
+			return valid;
 		},
 		
 	};

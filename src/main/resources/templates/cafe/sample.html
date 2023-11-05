@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBUCKS</title>
+    <style>
+    	.input label {
+    		display: inline-block;
+    		width: 7rem;
+    		margin: 5px 20px 5px 5px;
+    		text-align: right;
+    	}
+    	
+    </style>
+    
+</head>
+<body>
+	<h1>CAFE</h1>
+	<div class="input">
+		<form id="theForm" method="post" th:action="@{/user/create}">
+			<div>
+				<label>이메일</label>
+				<input type="text" name="userMail" required="required">
+			</div>
+			<div>
+				<label>이름</label>
+				<input type="text" name="userName" required="required">
+			</div>
+			<div>
+				<label>전화번호</label>
+				<input type="text" name="phoneNumber">
+			</div>
+			<div>
+				<label>비밀번호</label>
+				<input type="password" name="userPassword" required="required">
+			</div>
+			<div>
+				<label>비밀번호확인</label>
+				<input type="password" name="userPasswordConfirm">
+			</div>
+			<div>
+				<label></label>
+				<button type="button" id="btn_save">저장</button>
+			</div>
+		</form>
+	</div>
+	
+	
+</body>
+
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/user/signup.js}"></script>
+   
+<script>
+   
+</script>
+
+</html>

@@ -6,8 +6,11 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -117,9 +120,25 @@ public class JwtProvider {
 
     public String getToken(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
+        
         if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
             return token.substring(7);
+        } else {
+        	return getCookieValue(request, "tokens");
         }
-        return null;
+    }
+    
+    private String getCookieValue(HttpServletRequest request, String name) {
+    	Cookie[] cookies = request.getCookies();
+    	if (cookies != null) {
+    		for (Cookie cookie : cookies) {
+    			LoggerFactory.getLogger(getClass()).info("[COOKIE] {} - {}", cookie.getName(), cookie.getValue());
+    			if (name.equals(cookie.getName())) {
+    				return cookie.getValue();
+    			}
+    		}
+    	}
+    	
+    	return null;
     }
 }

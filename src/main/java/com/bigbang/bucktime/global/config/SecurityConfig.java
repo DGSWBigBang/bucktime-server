@@ -1,11 +1,9 @@
 package com.bigbang.bucktime.global.config;
 
-import com.bigbang.bucktime.global.jwt.JwtAuthenticationFilter;
-import com.bigbang.bucktime.global.jwt.JwtProvider;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -17,7 +15,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.List;
+import com.bigbang.bucktime.global.jwt.JwtAuthenticationFilter;
+import com.bigbang.bucktime.global.jwt.JwtProvider;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
@@ -32,7 +33,7 @@ public class SecurityConfig {
                         .configurationSource(corsConfigurationSource())
                 )
                 .csrf(AbstractHttpConfigurer::disable)
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form.loginPage("/front/user/signin"))
                 .logout(logout -> logout.logoutUrl("/user/logout").deleteCookies("accessToken").deleteCookies("refreshToken"))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
@@ -40,6 +41,7 @@ public class SecurityConfig {
                         .requestMatchers("/desk/create", "/desk/modify", "/desk/delete", "/cafe/modify", "/cafe/show/owner", "/order/modify/completion", "/order/show/owner", "/menu/create", "/menu/modify", "/menu/delete").hasAuthority("OWNER")
                         .requestMatchers("/user/modify", "/user/show", "/user/delete", "/order/create", "/order/show/user", "/rez/modify/used", "/rez/create", "/rez/show/user", "/rez/extension").hasAuthority("USER")
                         .requestMatchers("/hello").hasAuthority("OWNER")
+                        .requestMatchers("/front/cafe/**").hasAnyAuthority("OWNER")
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtProvider), UsernamePasswordAuthenticationFilter.class)
