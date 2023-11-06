@@ -62,6 +62,9 @@ public class RezService {
     public ShowReservationResponse showReservation(HttpServletRequest request) {
         String userMail = jwtProvider.getUserMail(request);
         ReservationEntity reservation = rezMapper.showReservationByUserMail(userMail);
+        if(reservation == null) {
+            return null;
+        }
         return ShowReservationResponse.builder()
                 .rezIdx(reservation.getRezIdx())
                 .deskName(deskMapper.findDeskName(reservation.getDeskIdx()))

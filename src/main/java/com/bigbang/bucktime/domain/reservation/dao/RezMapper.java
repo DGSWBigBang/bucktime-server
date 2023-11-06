@@ -16,7 +16,7 @@ public interface RezMapper {
 
     List<ReservationEntity> showReservationList(Integer cafeIdx);
 
-    ReservationEntity showReservationByUserMail(String userMail);
+    ReservationEntity showReservationByUserMail(@Param("userMail") String userMail);
 
     String getFinishTimeByDeskIdx(Integer deskIdx);
 

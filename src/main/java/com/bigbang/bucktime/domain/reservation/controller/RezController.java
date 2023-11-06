@@ -36,8 +36,12 @@ public class RezController {
 
     @Operation(summary = "자기 예약 보기", description = "이미 시간이 지난거도 보임")
     @GetMapping("/show/user")
-    public ResponseEntity<ShowReservationResponse> showReservation(HttpServletRequest request) {
-        return ResponseEntity.ok(rezService.showReservation(request));
+    public ResponseEntity<?> showReservation(HttpServletRequest request) {
+        ShowReservationResponse response = rezService.showReservation(request);
+        if(response == null) {
+            return ResponseEntity.ok(Response.of("예약이 없습니다."));
+        }
+        return ResponseEntity.ok(response);
     }
 
     @Operation(summary = "연장(유저)", description = "사용 연장 1시간 단위, hours는 몇시간 연장 할 것인지 desk-idx는 어떤 테이블을 연장 시킬 것인지")

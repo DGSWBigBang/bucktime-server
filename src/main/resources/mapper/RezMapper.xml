@@ -10,7 +10,7 @@
     </select>
 
     <select id="getFinishTimeByDeskIdx" parameterType="Integer" resultType="String">
-        SELECT finish_time FROM reservation WHERE desk_idx = #{deskIdx} LIMIT 1;
+        SELECT finish_time FROM reservation WHERE desk_idx = #{deskIdx} ORDER BY rez_idx DESC LIMIT 1;
     </select>
 
     <update id="extensionFinishTime">
@@ -18,7 +18,7 @@
     </update>
 
     <select id="showReservationByUserMail" parameterType="String" resultMap="reservationEntity">
-        SELECT * FROM reservation WHERE user_mail = #{userMail};
+        SELECT * FROM reservation WHERE user_mail = #{userMail} AND finish_time > NOW() ORDER BY rez_idx DESC LIMIT 1;
     </select>
 
     <resultMap id="reservationEntity" type="com.bigbang.bucktime.domain.reservation.dto.entity.ReservationEntity">
