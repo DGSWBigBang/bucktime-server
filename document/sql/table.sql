@@ -24,7 +24,7 @@ desk_name VARCHAR(10) NOT NULL,
 cafe_idx INT NOT NULL,
 price VARCHAR(10) NOT NULL,
 capacity SMALLINT NOT NULL DEFAULT 4,
-FOREIGN KEY (cafe_idx) REFERENCES cafe(cafe_idx)
+FOREIGN KEY (cafe_idx) REFERENCES cafe(cafe_idx) ON DELETE CASCADE
 );
 
 CREATE TABLE menu (
@@ -33,7 +33,7 @@ menu_name VARCHAR(20) NOT NULL,
 menu_description TEXT NOT NULL,
 menu_price INT NOT NULL,
 cafe_idx INT NOT NULL,
-FOREIGN KEY (cafe_idx) REFERENCES cafe(cafe_idx)
+FOREIGN KEY (cafe_idx) REFERENCES cafe(cafe_idx) ON DELETE CASCADE
 );
 
 CREATE TABLE notice (

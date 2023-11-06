@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBUCKS</title>
+    <title>TIMEBUCKS</title>
+    <link th:href="@{/css/seat.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/owner-sidebar.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="Container">
+  <div th:replace="~{/cafe/owner-sidebar.html :: owner-layout}"></div>
+
+  <div id="Show">
+    <div id="Seats">
+      <div id="SeatBox">
+        <div class="Seat" id="S1">
+          <span class="Table">Table 1</span>
+          <span class="Capacity">2인용</span>
+          <span class="Price">1000 원</span>
+        </div>
+        <div class="Seat" id="S2">
+          <span class="Table">Table 2</span>
+          <span class="Capacity">1인용</span>
+          <span class="Price">1000 원</span>
+        </div>
+        <div class="Seat" id="S3">
+          <span class="Table">Table 3</span>
+          <span class="Capacity">1인용</span>
+          <span class="Price">1000 원</span>
+        </div>
+        <div class="Seat" id="S4">
+          <span class="Table">Table 4</span>
+          <span class="Capacity">1인용</span>
+          <span class="Price">1000 원</span>
+        </div>
+        <div class="Seat" id="S5">
+          <span class="Table">Table 5</span>
+          <span class="Capacity">1인용</span>
+          <span class="Price">1000 원</span>
+        </div>
+        <div class="Seat" id="S6">
+          <span class="Table">Table 6</span>
+          <span class="Capacity">1인용</span>
+          <span class="Price">1000 원</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/pages/sidebar.js}"></script>
+<script type="text/javascript" th:src="@{/js/pages/owner.js}"></script>
+</html>

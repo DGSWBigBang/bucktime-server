@@ -5,36 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIMEBUCKS</title>
-    <style>
-    	.input label {
-    		display: inline-block;
-    		width: 7rem;
-    		margin: 5px 20px 5px 5px;
-    		text-align: right;
-    	}
-    	
-    </style>
-    
+    <link th:href="@{/css/signin.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1>LOGIN</h1>
-	<div class="input">
-		<form id="theForm">
-			<div>
-				<label>이메일</label>
-				<input type="text" name="userMail" required="required">
-			</div>
-			<div>
-				<label>비밀번호</label>
-				<input type="password" name="password" required="required">
-			</div>
-			<div>
-				<label></label>
-				<button type="button" id="btn_login">로그인</button>
-			</div>
-		</form>
+	<div id="Container">
+		<div id="SignInBox">
+			<img class="SignLogo" th:src="@{/images/coffee_logo.png}" />
+			<span class="SignTitle">Sign In</span>
+			<form id="theForm">
+				<div>
+					<label class="Label" id="EmailLabel" for="userMail">이메일</label>
+					<input type="text" name="userMail" required="required" id="userMail" class="Input">
+				</div>
+				<div>
+					<label class="Label" id="PassLabel" for="password">비밀번호</label>
+					<input type="password" name="password" required="required" id="password" class="Input">
+				</div>
+				<div>
+					<label></label>
+					<button type="button" id="btn_login">로그인</button>
+				</div>
+			</form>
+		</div>
 	</div>
-	
 	
 </body>
 

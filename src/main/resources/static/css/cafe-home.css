@@ -1,0 +1,48 @@
+.CafeInfoDiv {
+    width: 40vw;
+    height: 50vh;
+    margin: auto;
+    padding-top: 20vh;
+}
+
+p {
+    font-size: 40px;
+    border-bottom: 2px solid gray;
+}
+
+label {
+    padding-right: 5vw;
+}
+
+input {
+    margin-left: 5vw;
+    width: 25vw;
+    height: 5vh;
+}
+
+textarea {
+    margin-left: 5vw;
+    resize: none;
+    width: 25vw;
+    height: 10vh;
+}
+
+.LabelDiv{
+    height: 5vh;
+    display: inline-block;
+    transform: translateY(-10px);
+    border-right: 1px solid gray;
+}
+
+.TextAreaLabelDiv {
+    height: 10vh;
+    display: inline-block;
+    transform: translateY(-8vh);
+    border-right: 1px solid gray;
+}
+
+.RequestButton {
+    float: right;
+    width: 10vw;
+    height: 5vh;
+}

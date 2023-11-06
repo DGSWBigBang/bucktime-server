@@ -29,6 +29,7 @@
 					success: function(response) {
 						console.log("token", response.accessToken);
 						$.cookie('tokens', response.accessToken, { expires: 7, path: '/' });
+						location.href='/front/cafe/home'
 					},
 					
 					error: function(xhr) {

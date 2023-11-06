@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+}
+
+#Container {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2f403a;
+}
+
+#SignUpBox {
+    margin: auto;
+    width: 550px;
+    height: 830px;
+    border-radius: 25px;
+    background-color: white;
+}
+
+.SignLogo {
+    position: relative;
+    display: block;
+    margin: auto;
+    left: 10px;
+    top: 30px;
+    width: 95px;
+}
+
+.SignTitle {
+    position: relative;
+    display: block;
+    text-align: center;
+    top: 40px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.Label {
+    position: relative;
+    font-size: 20px;
+    left: 65px;
+}
+
+.Input {
+    position: relative;
+    margin: auto;
+    display: block;
+    border: 2.5px solid #033624;
+    border-radius: 25px;
+    padding-left: 25px;
+    font-size: 17.5px;
+    width: 450px;
+    height: 55px;
+}
+
+#EmailLabel {
+    top: 75px;
+}
+
+#EmailInput {
+    top: 75px;
+}
+
+#NameLabel {
+    top: 100px;
+}
+
+#NameInput {
+    top: 100px;
+}
+
+#PhoneLabel {
+    top: 125px;
+}
+
+#PhoneInput {
+    top: 125px;
+}
+
+#PassLabel {
+    top: 150px;
+}
+
+#PassInput {
+    top: 150px;
+}
+
+#PassCheckInput {
+    top: 175px;
+}
+
+#PassCheckLabel {
+    top: 175px;
+}
+
+#btn_save {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 450px;
+    height: 55px;
+    border: none;
+    background-color: #2f403a;
+    border-radius: 25px;
+    color: white;
+    font-size: 15px;
+    top: 200px;
+}

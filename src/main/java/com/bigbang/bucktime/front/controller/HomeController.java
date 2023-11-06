@@ -38,9 +38,6 @@ public class HomeController {
 			HttpServletRequest request,
 			HttpServletResponse response,
 			@PathVariable("pageName") String pageName) {
-		if(pageName.equals("menu")) {
-			return "cafe/menu/index";
-		}
 		return "cafe/" + pageName;
 	}
 
