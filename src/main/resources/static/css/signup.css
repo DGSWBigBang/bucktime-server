@@ -15,7 +15,7 @@ body {
 #SignUpBox {
     margin: auto;
     width: 550px;
-    height: 830px;
+    height: 750px;
     border-radius: 25px;
     background-color: white;
 }
@@ -23,9 +23,7 @@ body {
 .SignLogo {
     position: relative;
     display: block;
-    margin: auto;
-    left: 10px;
-    top: 30px;
+    margin: 1vh auto;
     width: 95px;
 }
 
@@ -33,7 +31,7 @@ body {
     position: relative;
     display: block;
     text-align: center;
-    top: 40px;
+    margin-top: 10px;
     font-size: 35px;
     font-weight: bold;
 }
@@ -57,49 +55,48 @@ body {
 }
 
 #EmailLabel {
-    top: 75px;
+    top: 3vh;
 }
 
 #EmailInput {
-    top: 75px;
+    top: 3vh;
 }
 
 #NameLabel {
-    top: 100px;
+    top: 5vh;
 }
 
 #NameInput {
-    top: 100px;
+    top: 5vh;
 }
 
 #PhoneLabel {
-    top: 125px;
+    top: 7vh;
 }
 
 #PhoneInput {
-    top: 125px;
+    top: 7vh;
 }
 
 #PassLabel {
-    top: 150px;
+    top: 9vh;
 }
 
 #PassInput {
-    top: 150px;
+    top: 9vh;
 }
 
 #PassCheckInput {
-    top: 175px;
+    top: 11vh;
 }
 
 #PassCheckLabel {
-    top: 175px;
+    top: 11vh;
 }
 
 #btn_save {
-    position: relative;
     display: block;
-    margin: auto;
+    margin: 13vh auto;
     width: 450px;
     height: 55px;
     border: none;
@@ -107,5 +104,4 @@ body {
     border-radius: 25px;
     color: white;
     font-size: 15px;
-    top: 200px;
 }
