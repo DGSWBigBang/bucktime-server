@@ -5,11 +5,20 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>TIMEBUCKS</title>
-      <link rel="stylesheet" th:href="@{/css/owner-sidebar.css}" type="text/css">
-      <link th:href="@{/css/add-menu.css}" type="text/css" rel="stylesheet">
+      <link rel="stylesheet" th:href="@{/css/ownersidebar.css}" type="text/css">
+      <link th:href="@{/css/addmenu.css}" type="text/css" rel="stylesheet">
   </head>
     <body>
-      <div th:replace="~{cafe/owner-sidebar.html :: owner-layout}"></div>
+        <div class="navbar">
+            <img th:src="@{/images/logo.png}" class="logoImg" th:onclick="|move('front')|">
+
+            <div class="itemDiv">
+                <a href="/front/cafe/home" class="items">Home</a>
+                <a href="/front/cafe/menu" class="items">Menu</a>
+                <a href="/front/cafe/order" class="items">ORDER</a>
+                <a href="/front/cafe/seat" class="items">SEAT</a>
+            </div>
+        </div>
       <div class="MainScreen">
           <div class="InputForm">
               <div>
@@ -29,6 +38,6 @@
       </div>
     </body>
   <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-  <script th:src="@{/js/pages/cafe/add-menu.js}"></script>
+  <script th:src="@{/js/pages/cafe/addmenu.js}"></script>
   <script th:src="@{/js/common.js}"></script>
 </html>

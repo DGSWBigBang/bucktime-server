@@ -7,11 +7,20 @@
     <title>TIMEBUCKS</title>
     <title>TIMEBUCKS</title>
     <link th:href="@{/css/seat.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{/css/owner-sidebar.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/ownersidebar.css}" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="Container">
-  <div th:replace="~{/cafe/owner-sidebar.html :: owner-layout}"></div>
+  <div class="navbar">
+    <img th:src="@{/images/logo.png}" class="logoImg" th:onclick="|move('front')|">
+
+    <div class="itemDiv">
+      <a href="/front/cafe/home" class="items">Home</a>
+      <a href="/front/cafe/menu" class="items">Menu</a>
+      <a href="/front/cafe/order" class="items">ORDER</a>
+      <a href="/front/cafe/seat" class="items">SEAT</a>
+    </div>
+  </div>
 
   <div id="Show">
     <div id="Seats">

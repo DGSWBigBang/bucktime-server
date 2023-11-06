@@ -101,3 +101,15 @@ body {
     left: calc(100% - 125px);
     bottom: 10px;
 }
+
+.Complete {
+    width: 40px;
+    height: 40px;
+    background-color: #dddddd;
+    border-radius: 100%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+    transform: translate(-2vh, 2vh);
+}

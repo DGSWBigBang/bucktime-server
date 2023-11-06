@@ -22,7 +22,7 @@
     </select>
 
     <select id="showOwnerPoint" parameterType="Integer" resultMap="orderEntity">
-        SELECT o.order_idx, o.order_time, o.menu_idx, o.user_mail, o.completion FROM menu m JOIN `order` o ON m.menu_idx = o.menu_idx WHERE m.cafe_idx = #{cafeIdx} ORDER BY o.order_idx DESC;
+        SELECT o.order_idx, o.order_time, o.menu_idx, o.user_mail, o.completion FROM menu m JOIN `order` o ON m.menu_idx = o.menu_idx WHERE m.cafe_idx = #{cafeIdx} AND o.completion = 0 ORDER BY o.order_idx DESC;
     </select>
 
     <select id="findCafeName" parameterType="Integer" resultType="String">
