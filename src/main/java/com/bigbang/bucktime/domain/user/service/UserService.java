@@ -15,11 +15,9 @@ import com.bigbang.bucktime.global.jwt.JwtProvider;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class UserService {
     private final UserDetailService userDetailService;
     private final JwtProvider jwtProvider;
@@ -32,7 +30,6 @@ public class UserService {
     }
 
     public JwtInfo login(LoginRequest loginRequest) {
-    	log.info("LOGIN {}", loginRequest);
         UserDetails user = userDetailService.loadUserByUsername(loginRequest.getUserMail());
         
         if (user == null) {

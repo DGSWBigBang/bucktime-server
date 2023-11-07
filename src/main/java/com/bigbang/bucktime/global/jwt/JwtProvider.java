@@ -10,7 +10,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -128,7 +127,6 @@ public class JwtProvider {
     	Cookie[] cookies = request.getCookies();
     	if (cookies != null) {
     		for (Cookie cookie : cookies) {
-    			LoggerFactory.getLogger(getClass()).info("[COOKIE] {} - {}", cookie.getName(), cookie.getValue());
     			if (name.equals(cookie.getName())) {
     				return cookie.getValue();
     			}

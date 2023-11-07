@@ -8,7 +8,6 @@ import com.bigbang.bucktime.domain.user.dto.response.DuplicateResponse;
 import com.bigbang.bucktime.domain.user.dto.response.ShowUserResponse;
 import com.bigbang.bucktime.domain.user.service.UserService;
 import com.bigbang.bucktime.global.dto.Response;
-import com.bigbang.bucktime.global.jwt.JwtInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,8 +38,6 @@ public class UserController {
     @Operation(summary = "로그인", description = "로그인 방식은 jwt 방식임 헤더의 Authorization를 Bearer (accessToken)로 설정 해야함")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        JwtInfo jwtInfo = userService.login(loginRequest);
-        
         try {
         	return ResponseEntity.ok(userService.login(loginRequest));
         } catch (Exception e) {
