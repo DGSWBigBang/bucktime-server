@@ -6,7 +6,7 @@
     </insert>
 
     <select id="showUserPoint" parameterType="String" resultMap="orderEntity">
-        SELECT * FROM `order` WHERE user_mail = #{userMail} ORDER BY order_idx ASC;
+        SELECT * FROM `order` WHERE user_mail = #{userMail} ORDER BY order_idx DESC;
     </select>
 
     <select id="findCafeIdx" parameterType="Integer" resultType="Integer">
