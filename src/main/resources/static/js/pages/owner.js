@@ -43,6 +43,8 @@ function getOrder() {
             response.forEach((element) => {
                 let LocalOrder = document.createElement("div");
 
+                LocalOrder.classList.add("eachOrder")
+
                 LocalOrder.innerHTML = `
                   <div class="Order">
                     <div class="Complete" onclick="complete(${element.orderIdx})">V</div>
