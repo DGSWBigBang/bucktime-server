@@ -11,8 +11,8 @@ $.ajax({
     success: function (response) {
         response.forEach((element, index) => {
             Table[index].innerHTML = element.deskName;
-            Capacity[index].innerHTML = element.capacity;
-            Price[index].innerHTML = element.price;
+            Capacity[index].innerHTML = `${element.capacity} 인용`;
+            Price[index].innerHTML = `${element.price}원/시`;
         })
     },
 
