@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBUCKS</title>
+    <link th:href="@{/css/ownersidebar.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/cafehome.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <img th:src="@{/images/logo.png}" class="logoImg" th:onclick="|move('front')|">
+
+        <div class="itemDiv">
+            <a href="/front/cafe/home" class="items">Home</a>
+            <a href="/front/cafe/menu" class="items">Menu</a>
+            <a href="/front/cafe/order" class="items">ORDER</a>
+            <a href="/front/cafe/seat" class="items">SEAT</a>
+        </div>
+    </div>
+  <div class="MainScreen">
+      <div class="CafeInfoDiv">
+          <p>카페 정보</p>
+          <div>
+              <div class="LabelDiv">
+                  <label for="cafeName">카페 이름</label>
+              </div>
+              <input id="cafeName">
+          </div>
+
+          <div>
+              <div class="LabelDiv">
+                  <label for="openTime">시작 시간</label>
+              </div>
+              <input id="openTime">
+          </div>
+
+          <div>
+              <div class="LabelDiv">
+                  <label for="closeTime">종료 시간</label>
+              </div>
+              <input id="closeTime">
+          </div>
+
+          <div>
+              <div class="LabelDiv">
+                  <label for="cafeNumber">전화 번호</label>
+              </div>
+              <input id="cafeNumber">
+          </div>
+
+          <div>
+              <div class="TextAreaLabelDiv">
+                  <label for="cafeDescription">카페 설명</label>
+              </div>
+              <textarea id="cafeDescription"></textarea>
+          </div>
+
+          <button onclick="submit()" class="RequestButton">수정</button>
+      </div>
+  </div>
+</body>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/js/pages/cafe/home.js}"></script>
+<script th:src="@{/js/pages/sidebar.js}"></script>
+</html>

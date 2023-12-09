@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBUCKS</title>
+	<link th:href="@{/css/signup.css}" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+	<div id="Container">
+		<div id="SignUpBox">
+			<img class="SignLogo" th:src="@{/images/coffee_logo.png}"/>
+			<span class="SignTitle">Sign Up</span>
+			<form id="theForm" method="post" th:action="@{/user/create}">
+				<div>
+					<label class="Label" id="EmailLabel" for="EmailInput">이메일</label>
+					<input type="text" name="userMail" required="required" id="EmailInput" class="Input">
+				</div>
+				<div>
+					<label class="Label" id="NameLabel" for="NameInput">이름</label>
+					<input type="text" name="userName" required="required" id="NameInput" class="Input">
+				</div>
+				<div>
+					<label class="Label" id="PhoneLabel" for="PhoneInput">전화번호</label>
+					<input type="text" name="phoneNumber" id="PhoneInput" class="Input">
+				</div>
+				<div>
+					<label class="Label" id="PassLabel" for="PassInput">비밀번호</label>
+					<input type="password" name="userPassword" required="required" id="PassInput" class="Input">
+				</div>
+				<div>
+					<label class="Label" id="PassCheckLabel" for="PassCheckInput">비밀번호 확인</label>
+					<input type="password" name="userPasswordConfirm" id="PassCheckInput" class="Input">
+				</div>
+				<div>
+					<button type="button" id="btn_save">저장</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	
+</body>
+
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/user/signup.js}"></script>
+   
+<script>
+   
+</script>
+
+</html>

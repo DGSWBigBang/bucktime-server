@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBUCKS</title>
+    <link th:href="@{/css/ownersidebar.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/order.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <img th:src="@{/images/logo.png}" class="logoImg" th:onclick="|move('front')|">
+
+        <div class="itemDiv">
+            <a href="/front/cafe/home" class="items">Home</a>
+            <a href="/front/cafe/menu" class="items">Menu</a>
+            <a href="/front/cafe/order" class="items">ORDER</a>
+            <a href="/front/cafe/seat" class="items">SEAT</a>
+        </div>
+    </div>
+  <div id="Container">
+    <div id="Show">
+      <div id="OrderBox">
+      </div>
+    </div>
+  </div>
+</body>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/js/pages/sidebar.js}"></script>
+<script th:src="@{/js/pages/owner.js}"></script>
+</html>

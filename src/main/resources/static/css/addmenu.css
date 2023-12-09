@@ -1,0 +1,35 @@
+textarea {
+    resize: none;
+    width: 70vw;
+    height: 50vh;
+    font-size: 20px;
+}
+
+label {
+    display: block;
+    font-size: 25px;
+}
+
+.MenuNameInput {
+    width: 70vw;
+    font-size: 20px;
+}
+
+.MenuPriceInput {
+    width: 70vw;
+    font-size: 20px;
+}
+
+.InputForm {
+    width: 70vw;
+    height: 60vh;
+    padding-top: 10vh;
+    margin: auto;
+}
+
+.RequestButton {
+    float: right;
+    width: 10vw;
+    height: 5vh;
+    margin-top: 5vh;
+}

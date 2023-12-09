@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigbang.bucktime.domain.order.dao.OrderMapper">
+    <insert id="createOrder">
+        INSERT INTO `order` (menu_idx, user_mail) VALUES (#{menuIdx}, #{userMail});
+    </insert>
+
+    <select id="showUserPoint" parameterType="String" resultMap="orderEntity">
+        SELECT * FROM `order` WHERE user_mail = #{userMail} ORDER BY order_idx DESC;
+    </select>
+
+    <select id="findCafeIdx" parameterType="Integer" resultType="Integer">
+        SELECT cafe_idx FROM menu WHERE menu_idx = #{menuIdx};
+    </select>
+
+    <select id="findCafeIdxByOwnerMail" parameterType="String" resultType="Integer">
+        SELECT cafe_idx FROM cafe WHERE owner_mail = #{ownerMail};
+    </select>
+
+    <select id="findMenuName" parameterType="Integer" resultType="String">
+        SELECT menu_name FROM menu WHERE menu_idx = #{menuIdx};
+    </select>
+
+    <select id="showOwnerPoint" parameterType="Integer" resultMap="orderEntity">
+        SELECT o.order_idx, o.order_time, o.menu_idx, o.user_mail, o.completion FROM menu m JOIN `order` o ON m.menu_idx = o.menu_idx WHERE m.cafe_idx = #{cafeIdx} AND o.completion = 0 ORDER BY o.order_idx ASC;
+    </select>
+
+    <select id="findCafeName" parameterType="Integer" resultType="String">
+        SELECT cafe_name FROM cafe WHERE cafe_idx = #{cafeIdx};
+    </select>
+
+    <update id="modifyCompletion" parameterType="Integer">
+        UPDATE `order` SET completion = '1' WHERE order_idx = #{orderIdx};
+    </update>
+
+    <resultMap id="orderEntity" type="com.bigbang.bucktime.domain.order.dto.entity.OrderEntity">
+        <id column="order_idx" property="orderIdx"/>
+        <result column="order_time" property="orderTime"/>
+        <result column="menu_idx" property="menuIdx"/>
+        <result column="user_mail" property="userMail"/>
+        <result column="completion" property="completion"/>
+    </resultMap>
+</mapper>

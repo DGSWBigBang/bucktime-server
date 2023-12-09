@@ -1,0 +1,134 @@
+body {
+    margin: 0;
+}
+
+#Container {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+#Navbar {
+    width: 325px;
+    height: 100vh;
+    background-color: #033624;
+}
+
+#Logo {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 150px;
+    top: 50px;
+}
+
+#ButtonBox {
+    position: relative;
+    top: 125px;
+    width: auto;
+    height: auto;
+}
+
+.Button {
+    width: 100%;
+    height: 75px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: #bfbfbf;
+    font-size: 35px;
+}
+
+.Button:hover {
+    color: white;
+}
+
+#Seat {
+    color: white;
+}
+
+#Show {
+    width: calc(100vw - 350px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 20vw;
+}
+
+#SeatBox {
+    width: 775px;
+    height: 425px;
+    background-color: #dddddd;
+    border-radius: 10px;
+}
+
+.Seat {
+    position: relative;
+    display: block;
+    width: 175px;
+    height: 125px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.25);
+}
+
+#S1 {
+    top: 25px;
+    left: 25px;
+}
+
+#S2 {
+    top: -100px;
+    left: 300px;
+}
+
+#S3 {
+    top: -225px;
+    left: 575px;
+}
+
+#S4 {
+    top: -100px;
+    left: 25px;
+}
+
+#S5 {
+    top: -225px;
+    left: 300px;
+}
+
+#S6 {
+    top: -350px;
+    left: 575px;
+}
+
+.Table {
+    position: relative;
+    font-weight: bold;
+    top: 10px;
+    left: 10px;
+}
+
+.Capacity {
+    display: block;
+    position: relative;
+    top: 35px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.Price {
+    display: block;
+    text-align: center;
+    top: 55px;
+    position: relative;
+    color: red;
+    font-weight: bold;
+    font-size: 17.5px;
+}

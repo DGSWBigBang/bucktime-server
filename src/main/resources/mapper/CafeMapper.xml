@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigbang.bucktime.domain.cafe.dao.CafeMapper">
+    <update id="updateCafeInfo" parameterType="com.bigbang.bucktime.domain.cafe.dto.request.ModifyCafeInfoRequest">
+        UPDATE cafe
+        SET
+        cafe_name = #{cafeName},
+        cafe_description = #{cafeDescription},
+        open_time = #{openTime},
+        close_time = #{closeTime},
+        call_number = #{callNumber}
+        WHERE cafe_idx = #{cafeIdx}
+    </update>
+
+    <select id="showCafeInfo" resultMap="cafeEntity">
+        SELECT * FROM cafe;
+    </select>
+
+    <select id="showOwnerCafeInfo" resultMap="cafeEntity">
+        SELECT * FROM cafe WHERE owner_mail = #{ownerMail};
+    </select>
+
+    <insert id="craeteCafe" parameterType="com.bigbang.bucktime.domain.cafe.dto.entity.CafeEntity">
+        INSERT INTO cafe
+            (cafe_name, cafe_description, cafe_address, owner_mail, latitude, longtitude, open_time, close_time, call_number)
+        VALUES
+            (#{cafeName}, #{cafeDescription}, #{address}, #{ownerMail}, #{latitude}, #{longtitude}, #{openTime}, #{closeTime}, #{callNumber})
+    </insert>
+
+    <resultMap id="cafeEntity" type="com.bigbang.bucktime.domain.cafe.dto.entity.CafeEntity">
+        <id column="cafe_idx" property="cafeIdx"/>
+        <result column="cafe_address" property="address"/>
+        <result column="cafe_name" property="cafeName"/>
+        <result column="owner_mail" property="ownerMail"/>
+        <result column="cafe_description" property="cafeDescription"/>
+        <result column="longitude" property="longitude"/>
+        <result column="latitude" property="latitude"/>
+        <result column="open_time" property="openTime"/>
+        <result column="close_time" property="closeTime"/>
+        <result column="call_number" property="callNumber"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,37 @@
+.navbar {
+    width: 20vw;
+    height: 100vh;
+    background-color: #033624;
+    position: fixed;
+}
+
+.logoImg {
+    margin: 10% auto;
+    width: 60%;
+    height: 7%;
+    display: block;
+}
+
+.itemDiv {
+    width: 100%;
+    margin-top: 15vh;
+}
+
+.items {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 40px;
+    margin-top: 5vh;
+    margin-left: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.MainScreen {
+    margin-left: 20vw;
+    width: 80vw;
+}

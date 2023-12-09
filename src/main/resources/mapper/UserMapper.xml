@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigbang.bucktime.domain.user.dao.UserMapper">
+    <insert id="insertUser" parameterType="com.bigbang.bucktime.domain.user.dto.request.SignupRequest">
+        INSERT INTO user (user_mail, user_name, phone_number, password) VALUES (#{userMail}, #{userName}, #{phoneNumber}, #{userPassword})
+    </insert>
+
+    <select id="findByUserMail" parameterType="String" resultMap="userEntity">
+        SELECT * FROM user WHERE user_mail = #{userMail}
+    </select>
+
+    <delete id="deleteByUserMail" parameterType="String">
+        DELETE FROM user WHERE user_mail = #{userMail}
+    </delete>
+
+    <update id="modifyUser" parameterType="com.bigbang.bucktime.domain.user.dto.request.ModifyUserRequest">
+        UPDATE user SET user_name = #{userName}, phone_number = #{phoneNumber}, password = #{userPassword} WHERE user_mail = #{userMail};
+    </update>
+
+    <select id="showUser" parameterType="String" resultMap="showUserResponse">
+        SELECT user_mail, user_name, phone_number FROM user WHERE user_mail = #{userMail};
+    </select>
+
+    <select id="countUserByUserMail" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM user WHERE user_mail = #{userMail};
+    </select>
+
+    <select id="countUserByPhoneNumber" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM user WHERE phone_number = #{phoneNumber};
+    </select>
+
+    <resultMap id="userEntity" type="com.bigbang.bucktime.domain.user.dto.entity.UserEntity">
+        <id column="user_mail" property="userMail"/>
+        <result column="user_name" property="userName"/>
+        <result column="auth" property="auth"/>
+        <result column="phone_number" property="phoneNumber"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <resultMap id="showUserResponse" type="com.bigbang.bucktime.domain.user.dto.response.ShowUserResponse">
+        <id column="user_mail" property="userMail"/>
+        <result column="user_name" property="userName"/>
+        <result column="phone_number" property="phoneNumber"/>
+    </resultMap>
+</mapper>

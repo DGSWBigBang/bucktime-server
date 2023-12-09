@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TIMEBUCKS</title>
+        <link rel="stylesheet" th:href="@{/css/menu.css}" type="text/css">
+        <link th:href="@{/css/ownersidebar.css}" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar">
+            <img th:src="@{/images/logo.png}" class="logoImg" th:onclick="|move('front')|">
+
+            <div class="itemDiv">
+                <a href="/front/cafe/home" class="items">Home</a>
+                <a href="/front/cafe/menu" class="items">Menu</a>
+                <a href="/front/cafe/order" class="items">ORDER</a>
+                <a href="/front/cafe/seat" class="items">SEAT</a>
+            </div>
+        </div>
+        <div>
+            <div class="MainScreen">
+                <span class="title">메뉴 정보</span>
+
+                <table class="menu">
+                    <thead>
+	                    <tr>
+	                        <th>메뉴 고유 번호</th>
+	                        <th>메뉴 이름</th>
+	                        <th>메뉴 설명</th>
+	                        <th>메뉴 가격</th>
+	                        <th>수정</th>
+	                    </tr>
+                    </thead>
+                    <tbody id="list_body">
+                    </tbody>
+                    
+                </table>
+
+                <button th:onclick="|move('front/cafe/menu/add')|" class="AddButton">추가</button>
+            </div>
+        </div>
+    </body>
+
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery-tmpl/jquery.tmpl.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/cafe/menu.js}"></script>
+<script th:src="@{/js/pages/sidebar.js}"></script>
+
+<script id="listTemplate" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${menuIdx}</td>
+        <td>${menuName}</td>
+        <td>${menuDescription}</td>
+        <td>${menuPrice}</td>
+        <td>
+            <button class="btn_modify">수정</button>
+        </td>
+    </tr>
+</script>
+
+
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIMEBUCKS</title>
+    <link th:href="@{/css/signin.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="Container">
+		<div id="SignInBox">
+			<img class="SignLogo" th:src="@{/images/coffee_logo.png}" />
+			<span class="SignTitle">Sign In</span>
+			<form id="theForm">
+				<div>
+					<label class="Label" id="EmailLabel" for="userMail">이메일</label>
+					<input type="text" name="userMail" required="required" id="userMail" class="Input">
+				</div>
+				<div>
+					<label class="Label" id="PassLabel" for="password">비밀번호</label>
+					<input type="password" name="password" required="required" id="password" class="Input">
+				</div>
+				<div>
+					<label></label>
+					<button type="button" id="btn_login">로그인</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+</body>
+
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery-cookie/1.4.1-1/jquery.cookie.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/pages/user/signin.js}"></script>
+   
+<script>
+   
+</script>
+
+</html>
